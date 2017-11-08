@@ -9,7 +9,7 @@
 
 source:         ./_app
 destination:    ./_site
-timezone:       Asia/Hong_Kong
+timezone:       Japan
 permalink:      /:title.html
 markdown:       redcarpet
 highlighter:    pygments
@@ -44,10 +44,10 @@ redcarpet:
 #
 
 # Site name
-name:           Almace Scaffolding
+name:           Naelah Nordin
 
 # Site description, will appear in the document meta and Atom feed subtitle
-description:    I make things that don’t suck.
+description:    I write stuff.
 
 # Base URL, this is useful when I need to build site in a sub-directory (like GitHub Pages for Projects), it provides a specific URL prefix, for example, if the production site URL is http://sparanoid.com/lab/version/, set `base` to `/lab/version/24`, without trailing slash.
 # Default:      null
@@ -78,12 +78,12 @@ download:       http://dl.sparanoid.com
 # {{ site.profile.google_plus }}: used in footer, this link is display: noned, only to pass Google+ authorship check
 # {{ site.profile.donate }}: a donate link used in posts like `<a href="{{ site.profile.donate }}">Donate me</a>`
 profile:
-  user:         Tunghsiao Liu
-  email:        t@sparanoid.com
+  user:         Naelah Nordin
+  email:        naelahnordin@gmail.com
   twitter:
-    creator:    tunghsiao
-    site:       sparanoid
-  google_plus:  tunghsiaoliu
+    creator:    naelnord
+    site:       naelah.github.io
+  google_plus:  naelah
   donate:       https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LTXZ835Y6T95S
 
 # Enable this settings to make your feed Daring Fireball-like link blog
@@ -101,7 +101,7 @@ clean_homepage: false
 
 # Style post link color (if defined) for article list
 # Default:      false
-colorful_list:  false
+colorful_list:  true
 
 # Show generator credits
 # Default:      true
