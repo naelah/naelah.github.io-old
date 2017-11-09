@@ -104,7 +104,7 @@ description:    Nael's knapsack - A collection of essays and articles
 # `/my-project`, without trailing slash.
 #
 # Default:      ""
-baseurl:        /lab/amsf
+baseurl:        
 
 # CSS path used in templates
 #
