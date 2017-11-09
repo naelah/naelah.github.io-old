@@ -1,0 +1,4 @@
+User-agent: *
+
+
+Sitemap: https://naelahnordin.com/lab/amsf/sitemap.xml
