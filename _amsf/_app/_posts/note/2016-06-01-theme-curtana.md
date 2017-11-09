@@ -5,7 +5,7 @@ category: note
 tags: curtana
 ---
 
-Curtana is the default theme of [AMSF](https://sparanoid.com/lab/amsf/) (Almace Scaffolding).
+Curtana is the default theme of [AMSF](https://sparanoid.com/) (Almace Scaffolding).
 
 ### Features
 

@@ -12,7 +12,7 @@ Sparanoid is a design studio operated by Tunghsiao Liu. You can ping me on [Twit
 
 ## Colophon
 
-[AMSF](https://sparanoid.com/lab/amsf/) ([Source](https://github.com/sparanoid/sparanoid.com)) -
+[AMSF](https://sparanoid.com/) ([Source](https://github.com/sparanoid/sparanoid.com)) -
 [GitHub](https://github.com/) -
 [CloudFront](https://aws.amazon.com/cloudfront/) -
 [Textmate](https://macromates.com/)

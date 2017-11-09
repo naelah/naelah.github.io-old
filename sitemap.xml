@@ -136,14 +136,14 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://naelahnordin.com/lab/amsf/</loc>
+    <loc>https://naelahnordin.com/</loc>
     <lastmod>2017-11-09</lastmod>
   </url>
 
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/about/</loc>
+        <loc>https://naelahnordin.com/about/</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -152,7 +152,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/404.html</loc>
+        <loc>https://naelahnordin.com/404.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -161,7 +161,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/</loc>
+        <loc>https://naelahnordin.com/</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -170,7 +170,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/news/</loc>
+        <loc>https://naelahnordin.com/news/</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -181,7 +181,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/start.html</loc>
+        <loc>https://naelahnordin.com/start.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -190,7 +190,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/init.html</loc>
+        <loc>https://naelahnordin.com/init.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -199,7 +199,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/upgrading-guide-v1.1.0.html</loc>
+        <loc>https://naelahnordin.com/upgrading-guide-v1.1.0.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -208,7 +208,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/open-graph.html</loc>
+        <loc>https://naelahnordin.com/open-graph.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -217,7 +217,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/jekyll-theme-compatibility.html</loc>
+        <loc>https://naelahnordin.com/jekyll-theme-compatibility.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -226,7 +226,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/theme-curtana.html</loc>
+        <loc>https://naelahnordin.com/theme-curtana.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -235,7 +235,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/deployment-methods.html</loc>
+        <loc>https://naelahnordin.com/deployment-methods.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -244,7 +244,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/multiple-themes-support.html</loc>
+        <loc>https://naelahnordin.com/multiple-themes-support.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -253,7 +253,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/welcome.html</loc>
+        <loc>https://naelahnordin.com/welcome.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -262,7 +262,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/getting-started.html</loc>
+        <loc>https://naelahnordin.com/getting-started.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -271,7 +271,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/customizing-styles.html</loc>
+        <loc>https://naelahnordin.com/customizing-styles.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -280,7 +280,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/configuration.html</loc>
+        <loc>https://naelahnordin.com/configuration.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -289,7 +289,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/themes.html</loc>
+        <loc>https://naelahnordin.com/themes.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -298,7 +298,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/creating-themes.html</loc>
+        <loc>https://naelahnordin.com/creating-themes.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -307,7 +307,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/syntax-highlighting.html</loc>
+        <loc>https://naelahnordin.com/syntax-highlighting.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -316,7 +316,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/markdown-features-test.html</loc>
+        <loc>https://naelahnordin.com/markdown-features-test.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -325,7 +325,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/markup-example.html</loc>
+        <loc>https://naelahnordin.com/markup-example.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -334,7 +334,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/custom-html-markups.html</loc>
+        <loc>https://naelahnordin.com/custom-html-markups.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -343,7 +343,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/custom-color-scheme.html</loc>
+        <loc>https://naelahnordin.com/custom-color-scheme.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -352,7 +352,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/custom-css.html</loc>
+        <loc>https://naelahnordin.com/custom-css.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -363,7 +363,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/external-link-post.html</loc>
+        <loc>https://naelahnordin.com/external-link-post.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -372,7 +372,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/custom-heading-image.html</loc>
+        <loc>https://naelahnordin.com/custom-heading-image.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -381,7 +381,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/custom-heading-background.html</loc>
+        <loc>https://naelahnordin.com/custom-heading-background.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         
@@ -390,7 +390,7 @@
   
     
       <url>
-        <loc>https://naelahnordin.com/lab/amsf/github-pages-setup.html</loc>
+        <loc>https://naelahnordin.com/github-pages-setup.html</loc>
         
           <lastmod>2017-11-09</lastmod>
         

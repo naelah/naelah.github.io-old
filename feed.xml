@@ -138,15 +138,15 @@
   <title>naelah nordin</title>
   <subtitle>Nael's knapsack - A collection of essays and articles</subtitle>
   <updated>2017-11-09T12:21:46+09:00</updated>
-  <id>https://naelahnordin.com/lab/amsf/</id>
-  <generator uri="https://sparanoid.com/lab/amsf/" version="1.1.8">Almace Scaffolding</generator>
+  <id>https://naelahnordin.com/</id>
+  <generator uri="https://sparanoid.com/" version="1.1.8">Almace Scaffolding</generator>
 
-  <link rel="alternate" type="text/html" hreflang="en" href="https://naelahnordin.com/lab/amsf/" />
-  <link rel="self" type="application/atom+xml" href="https://naelahnordin.com/lab/amsf/feed.xml" />
+  <link rel="alternate" type="text/html" hreflang="en" href="https://naelahnordin.com/" />
+  <link rel="self" type="application/atom+xml" href="https://naelahnordin.com/feed.xml" />
 
   <author>
     <name>Naelah Nordin</name>
-    <uri>https://naelahnordin.com/lab/amsf/</uri>
+    <uri>https://naelahnordin.com/</uri>
     <email>naelahnordin@gmail.com</email>
   </author>
 
@@ -158,8 +158,8 @@
 
       <entry>
         <title>Start</title>
-        <id>https://naelahnordin.com/lab/amsf/start.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/start.html" />
+        <id>https://naelahnordin.com/start.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/start.html" />
         <published>2017-11-02T00:00:00+09:00</published>
 
         
@@ -172,7 +172,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;new new&lt;/p&gt;
 
@@ -195,8 +195,8 @@
 
       <entry>
         <title>Init</title>
-        <id>https://naelahnordin.com/lab/amsf/init.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/init.html" />
+        <id>https://naelahnordin.com/init.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/init.html" />
         <published>2017-11-01T00:00:00+09:00</published>
 
         
@@ -209,7 +209,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;new blog who dis&lt;/p&gt;
 
@@ -232,8 +232,8 @@
 
       <entry>
         <title>Upgrading Guide: v1.1.0</title>
-        <id>https://naelahnordin.com/lab/amsf/upgrading-guide-v1.1.0.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/upgrading-guide-v1.1.0.html" />
+        <id>https://naelahnordin.com/upgrading-guide-v1.1.0.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/upgrading-guide-v1.1.0.html" />
         <published>2017-01-07T00:00:00+09:00</published>
 
         
@@ -246,7 +246,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;There’re some significant changes in update v1.1.0, action required after you upgrade Almace Scaffolding.&lt;/p&gt;
 
@@ -286,8 +286,8 @@
 
       <entry>
         <title>Open Graph</title>
-        <id>https://naelahnordin.com/lab/amsf/open-graph.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/open-graph.html" />
+        <id>https://naelahnordin.com/open-graph.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/open-graph.html" />
         <published>2017-01-06T00:00:00+09:00</published>
 
         
@@ -300,7 +300,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;Theme Curtana has full &lt;a href=&quot;http://ogp.me/&quot;&gt;Open Graph&lt;/a&gt; and &lt;a href=&quot;https://dev.twitter.com/docs/cards&quot;&gt;Twitter Cards&lt;/a&gt; support.&lt;/p&gt;
 
@@ -308,7 +308,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;page.thumbnail&lt;/code&gt; if defined in your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;If no specified &lt;code class=&quot;highlighter-rouge&quot;&gt;page.thumbnail&lt;/code&gt; defined, it uses &lt;a href=&quot;/lab/amsf/custom-heading-background.html&quot;&gt;Heading Background Image&lt;/a&gt; (aka. &lt;code class=&quot;highlighter-rouge&quot;&gt;page.heading-bg&lt;/code&gt;) if defined in your post front-matter field.&lt;/li&gt;
+  &lt;li&gt;If no specified &lt;code class=&quot;highlighter-rouge&quot;&gt;page.thumbnail&lt;/code&gt; defined, it uses &lt;a href=&quot;/custom-heading-background.html&quot;&gt;Heading Background Image&lt;/a&gt; (aka. &lt;code class=&quot;highlighter-rouge&quot;&gt;page.heading-bg&lt;/code&gt;) if defined in your post front-matter field.&lt;/li&gt;
   &lt;li&gt;If no heading background image found, Curtana will try to grab the first image (wrapped inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;) in your post as your post thumbnail&lt;/li&gt;
   &lt;li&gt;If nothing found, it fails back to &lt;code class=&quot;highlighter-rouge&quot;&gt;logo.png&lt;/code&gt; located at your site root.&lt;/li&gt;
 &lt;/ol&gt;
@@ -338,8 +338,8 @@
 
       <entry>
         <title>Jekyll Theme Compatibility</title>
-        <id>https://naelahnordin.com/lab/amsf/jekyll-theme-compatibility.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/jekyll-theme-compatibility.html" />
+        <id>https://naelahnordin.com/jekyll-theme-compatibility.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/jekyll-theme-compatibility.html" />
         <published>2016-11-07T00:00:00+09:00</published>
 
         
@@ -352,7 +352,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;With recent release of Jekyll, it gets the built-in ability to support &lt;a href=&quot;https://jekyllrb.com/docs/themes/&quot;&gt;themes&lt;/a&gt;, since we’ve already added theme support in 2015, the original config variables &lt;code class=&quot;highlighter-rouge&quot;&gt;theme&lt;/code&gt; would be conflicted with the built-in one.&lt;/p&gt;
 
@@ -383,8 +383,8 @@
 
       <entry>
         <title>Introducing Curtana</title>
-        <id>https://naelahnordin.com/lab/amsf/theme-curtana.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/theme-curtana.html" />
+        <id>https://naelahnordin.com/theme-curtana.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/theme-curtana.html" />
         <published>2016-06-01T00:00:00+09:00</published>
 
         
@@ -397,9 +397,9 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
-            &lt;p&gt;Curtana is the default theme of &lt;a href=&quot;https://sparanoid.com/lab/amsf/&quot;&gt;AMSF&lt;/a&gt; (Almace Scaffolding).&lt;/p&gt;
+            &lt;p&gt;Curtana is the default theme of &lt;a href=&quot;https://sparanoid.com/&quot;&gt;AMSF&lt;/a&gt; (Almace Scaffolding).&lt;/p&gt;
 
 &lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
 
@@ -434,8 +434,8 @@
 
       <entry>
         <title>Deployment Methods</title>
-        <id>https://naelahnordin.com/lab/amsf/deployment-methods.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/deployment-methods.html" />
+        <id>https://naelahnordin.com/deployment-methods.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/deployment-methods.html" />
         <published>2016-03-18T00:00:00+09:00</published>
 
         
@@ -448,7 +448,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;Sites generated using Almace Scaffolding can be deployed in nearly any web hosting services. A few of the most common deployment techniques are described below. More deployment methods please refer to &lt;a href=&quot;https://jekyllrb.com/docs/deployment-methods/&quot;&gt;Jekyll - Deployment methods&lt;/a&gt;.&lt;/p&gt;
 
@@ -493,8 +493,8 @@
 
       <entry>
         <title>Multiple Themes Support</title>
-        <id>https://naelahnordin.com/lab/amsf/multiple-themes-support.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/multiple-themes-support.html" />
+        <id>https://naelahnordin.com/multiple-themes-support.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/multiple-themes-support.html" />
         <published>2015-08-18T00:00:00+09:00</published>
 
         
@@ -507,9 +507,9 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
-            &lt;p&gt;From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See &lt;a href=&quot;/lab/amsf/themes.html&quot;&gt;Themes&lt;/a&gt; for more information.&lt;/p&gt;
+            &lt;p&gt;From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See &lt;a href=&quot;/themes.html&quot;&gt;Themes&lt;/a&gt; for more information.&lt;/p&gt;
 
           
           
@@ -530,8 +530,8 @@
 
       <entry>
         <title>Welcome</title>
-        <id>https://naelahnordin.com/lab/amsf/welcome.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/welcome.html" />
+        <id>https://naelahnordin.com/welcome.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/welcome.html" />
         <published>2014-06-13T00:00:00+09:00</published>
 
         
@@ -544,12 +544,12 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;AMSF, a.k.a. &lt;strong&gt;Almace Scaffolding&lt;/strong&gt;, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.&lt;/p&gt;
 
 &lt;p class=&quot;largetype&quot;&gt;
-  &lt;a href=&quot;/lab/amsf/getting-started.html&quot;&gt;Getting Started &amp;#x27A1;&amp;#xfe0e;&lt;/a&gt;
+  &lt;a href=&quot;/getting-started.html&quot;&gt;Getting Started &amp;#x27A1;&amp;#xfe0e;&lt;/a&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Go to the &lt;a href=&quot;https://github.com/sparanoid/almace-scaffolding&quot;&gt;GitHub&lt;/a&gt; page for downloads, bug reports, and feature requests.&lt;/p&gt;
@@ -594,8 +594,8 @@
 
       <entry>
         <title>Getting Started</title>
-        <id>https://naelahnordin.com/lab/amsf/getting-started.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/getting-started.html" />
+        <id>https://naelahnordin.com/getting-started.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/getting-started.html" />
         <published>2014-06-12T00:00:00+09:00</published>
 
         
@@ -608,7 +608,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
 
@@ -689,8 +689,8 @@
 
       <entry>
         <title>Customizing Styles</title>
-        <id>https://naelahnordin.com/lab/amsf/customizing-styles.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/customizing-styles.html" />
+        <id>https://naelahnordin.com/customizing-styles.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/customizing-styles.html" />
         <published>2014-06-11T00:00:00+09:00</published>
 
         
@@ -703,7 +703,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;You can customize the basic look and feel without touching the theme files by changing &lt;code class=&quot;highlighter-rouge&quot;&gt;user.js&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;user.less&lt;/code&gt;:&lt;/p&gt;
 
@@ -739,8 +739,8 @@
 
       <entry>
         <title>Configuration</title>
-        <id>https://naelahnordin.com/lab/amsf/configuration.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/configuration.html" />
+        <id>https://naelahnordin.com/configuration.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/configuration.html" />
         <published>2014-06-11T00:00:00+09:00</published>
 
         
@@ -753,7 +753,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;configuration-settings&quot;&gt;Configuration Settings&lt;/h2&gt;
 
@@ -793,8 +793,8 @@
 
       <entry>
         <title>Themes</title>
-        <id>https://naelahnordin.com/lab/amsf/themes.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/themes.html" />
+        <id>https://naelahnordin.com/themes.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/themes.html" />
         <published>2014-06-10T00:00:00+09:00</published>
 
         
@@ -807,7 +807,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -886,8 +886,8 @@
 
       <entry>
         <title>Creating Your Own Theme</title>
-        <id>https://naelahnordin.com/lab/amsf/creating-themes.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/creating-themes.html" />
+        <id>https://naelahnordin.com/creating-themes.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/creating-themes.html" />
         <published>2014-06-09T00:00:00+09:00</published>
 
         
@@ -900,7 +900,7 @@
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -1272,8 +1272,8 @@ Reading time: 3 hrs 20 mins
 
       <entry>
         <title>Syntax Highlighting</title>
-        <id>https://naelahnordin.com/lab/amsf/syntax-highlighting.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/syntax-highlighting.html" />
+        <id>https://naelahnordin.com/syntax-highlighting.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/syntax-highlighting.html" />
         <published>2014-06-06T00:00:00+09:00</published>
 
         
@@ -1286,7 +1286,7 @@ Reading time: 3 hrs 20 mins
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;Code highlighting demo, powered by Rouge. More info about code highlighting can be found at &lt;a href=&quot;http://jekyllrb.com/docs/templates/#code-snippet-highlighting&quot;&gt;Jekyll’s documentation&lt;/a&gt;.&lt;/p&gt;
 
@@ -1612,8 +1612,8 @@ and &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&
 
       <entry>
         <title>Markdown Features Test</title>
-        <id>https://naelahnordin.com/lab/amsf/markdown-features-test.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/markdown-features-test.html" />
+        <id>https://naelahnordin.com/markdown-features-test.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/markdown-features-test.html" />
         <published>2014-06-06T00:00:00+09:00</published>
 
         
@@ -1626,7 +1626,7 @@ and &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;indented-code-blocks&quot;&gt;Indented Code Blocks&lt;/h2&gt;
 
@@ -1777,8 +1777,8 @@ end
 
       <entry>
         <title>Markup Example</title>
-        <id>https://naelahnordin.com/lab/amsf/markup-example.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/markup-example.html" />
+        <id>https://naelahnordin.com/markup-example.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/markup-example.html" />
         <published>2014-06-05T00:00:00+09:00</published>
 
         
@@ -1791,7 +1791,7 @@ end
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;Lorem lean startup ipsum &lt;strong&gt;product market fit customer development&lt;/strong&gt; acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck. Social bookmarking group buying &lt;a href=&quot;#&quot;&gt;crowded market&lt;/a&gt; pivot onboarding freemium prototype ping pong. Early stage disruptive ecosystem community outreach dynamic location based strategic investor.&lt;/p&gt;
 
@@ -2043,8 +2043,8 @@ Careful Skippy, you really aren’t as convincing as you think you are.&lt;/p&gt
 
       <entry>
         <title>Custom HTML Markups</title>
-        <id>https://naelahnordin.com/lab/amsf/custom-html-markups.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/custom-html-markups.html" />
+        <id>https://naelahnordin.com/custom-html-markups.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/custom-html-markups.html" />
         <published>2014-06-01T00:00:00+09:00</published>
 
         
@@ -2057,7 +2057,7 @@ Careful Skippy, you really aren’t as convincing as you think you are.&lt;/p&gt
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;note-store-and-download&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.note&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.store&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;.download&lt;/code&gt;&lt;/h2&gt;
 
@@ -2200,8 +2200,8 @@ Love this plugin? please consider &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
 
       <entry>
         <title>Custom Color Scheme</title>
-        <id>https://naelahnordin.com/lab/amsf/custom-color-scheme.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/custom-color-scheme.html" />
+        <id>https://naelahnordin.com/custom-color-scheme.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/custom-color-scheme.html" />
         <published>2014-05-01T00:00:00+09:00</published>
 
         
@@ -2214,7 +2214,7 @@ Love this plugin? please consider &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;This is an example how to change your post color scheme for specific posts. You can simply add the following variables to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -2254,8 +2254,8 @@ scheme-hero-bg: &quot;#0029ff&quot;
 
       <entry>
         <title>Unique Post Styling via Custom CSS</title>
-        <id>https://naelahnordin.com/lab/amsf/custom-css.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/custom-css.html" />
+        <id>https://naelahnordin.com/custom-css.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/custom-css.html" />
         <published>2014-04-01T00:00:00+09:00</published>
 
         
@@ -2268,7 +2268,7 @@ scheme-hero-bg: &quot;#0029ff&quot;
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;This is an example how to change your post styling via CSS. You can simply add the &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; option to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -2306,8 +2306,8 @@ css: |
 
       <entry>
         <title>External Link Post</title>
-        <id>https://naelahnordin.com/lab/amsf/external-link-post.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/external-link-post.html" />
+        <id>https://naelahnordin.com/external-link-post.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/external-link-post.html" />
         <published>2014-02-01T00:00:00+09:00</published>
 
         
@@ -2320,7 +2320,7 @@ css: |
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;This is an example of Tumblr-like external link post. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -2349,8 +2349,8 @@ css: |
 
       <entry>
         <title>Custom Heading Image</title>
-        <id>https://naelahnordin.com/lab/amsf/custom-heading-image.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/custom-heading-image.html" />
+        <id>https://naelahnordin.com/custom-heading-image.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/custom-heading-image.html" />
         <published>2014-02-01T00:00:00+09:00</published>
 
         
@@ -2363,7 +2363,7 @@ css: |
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;This is an example of custom post heading image. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -2415,8 +2415,8 @@ css: |
 
       <entry>
         <title>Custom Heading Background</title>
-        <id>https://naelahnordin.com/lab/amsf/custom-heading-background.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/custom-heading-background.html" />
+        <id>https://naelahnordin.com/custom-heading-background.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/custom-heading-background.html" />
         <published>2014-02-01T00:00:00+09:00</published>
 
         
@@ -2429,7 +2429,7 @@ css: |
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;p&gt;This is an example of custom heading background. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -2484,8 +2484,8 @@ css: |
 
       <entry>
         <title>GitHub Pages Setup Guide</title>
-        <id>https://naelahnordin.com/lab/amsf/github-pages-setup.html</id>
-        <link rel="alternate" type="text/html" href="https://naelahnordin.com/lab/amsf/github-pages-setup.html" />
+        <id>https://naelahnordin.com/github-pages-setup.html</id>
+        <link rel="alternate" type="text/html" href="https://naelahnordin.com/github-pages-setup.html" />
         <published>2014-01-01T00:00:00+09:00</published>
 
         
@@ -2498,7 +2498,7 @@ css: |
           <email>naelahnordin@gmail.com</email>
         </author>
 
-        <content type="html" xml:base="https://naelahnordin.com/lab/amsf/">
+        <content type="html" xml:base="https://naelahnordin.com/">
           
             &lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
 

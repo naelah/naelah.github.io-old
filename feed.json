@@ -140,8 +140,8 @@
     
     {
       "title": "Start",
-      "permalink": "https://naelahnordin.com/lab/amsf/start.html",
-      "link": "https://naelahnordin.com/lab/amsf/start.html",
+      "permalink": "https://naelahnordin.com/start.html",
+      "link": "https://naelahnordin.com/start.html",
       "date": "2017-11-02T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -164,8 +164,8 @@
     ,
     {
       "title": "Init",
-      "permalink": "https://naelahnordin.com/lab/amsf/init.html",
-      "link": "https://naelahnordin.com/lab/amsf/init.html",
+      "permalink": "https://naelahnordin.com/init.html",
+      "link": "https://naelahnordin.com/init.html",
       "date": "2017-11-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -188,8 +188,8 @@
     ,
     {
       "title": "Upgrading Guide: v1.1.0",
-      "permalink": "https://naelahnordin.com/lab/amsf/upgrading-guide-v1.1.0.html",
-      "link": "https://naelahnordin.com/lab/amsf/upgrading-guide-v1.1.0.html",
+      "permalink": "https://naelahnordin.com/upgrading-guide-v1.1.0.html",
+      "link": "https://naelahnordin.com/upgrading-guide-v1.1.0.html",
       "date": "2017-01-07T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -212,8 +212,8 @@
     ,
     {
       "title": "Open Graph",
-      "permalink": "https://naelahnordin.com/lab/amsf/open-graph.html",
-      "link": "https://naelahnordin.com/lab/amsf/open-graph.html",
+      "permalink": "https://naelahnordin.com/open-graph.html",
+      "link": "https://naelahnordin.com/open-graph.html",
       "date": "2017-01-06T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -223,7 +223,7 @@
         "url": "https://naelahnordin.com/",
         "email": "naelahnordin@gmail.com"
       },
-      "content": "<p>Theme Curtana has full <a href=\"http://ogp.me/\">Open Graph</a> and <a href=\"https://dev.twitter.com/docs/cards\">Twitter Cards</a> support.</p>\n\n<p>It will look for the image in the following order:</p>\n\n<ol>\n  <li>Use <code class=\"highlighter-rouge\">page.thumbnail</code> if defined in your post <a href=\"http://jekyllrb.com/docs/frontmatter/\">front-matter field</a>.</li>\n  <li>If no specified <code class=\"highlighter-rouge\">page.thumbnail</code> defined, it uses <a href=\"/lab/amsf/custom-heading-background.html\">Heading Background Image</a> (aka. <code class=\"highlighter-rouge\">page.heading-bg</code>) if defined in your post front-matter field.</li>\n  <li>If no heading background image found, Curtana will try to grab the first image (wrapped inside <code class=\"highlighter-rouge\">&lt;img&gt;</code>) in your post as your post thumbnail</li>\n  <li>If nothing found, it fails back to <code class=\"highlighter-rouge\">logo.png</code> located at your site root.</li>\n</ol>\n\n<p>You can always use <code class=\"highlighter-rouge\">page.thumb_force_logo</code> in your post front-matter field to override the above lookup.</p>\n\n<p>Here’s a preview on Twitter:</p>\n\n<p><img src=\"https://d349cztnlupsuf.cloudfront.net/open-graph-preview.png\" alt=\"Twitter Cards (Open Graph compatible) Preview\" /></p>",
+      "content": "<p>Theme Curtana has full <a href=\"http://ogp.me/\">Open Graph</a> and <a href=\"https://dev.twitter.com/docs/cards\">Twitter Cards</a> support.</p>\n\n<p>It will look for the image in the following order:</p>\n\n<ol>\n  <li>Use <code class=\"highlighter-rouge\">page.thumbnail</code> if defined in your post <a href=\"http://jekyllrb.com/docs/frontmatter/\">front-matter field</a>.</li>\n  <li>If no specified <code class=\"highlighter-rouge\">page.thumbnail</code> defined, it uses <a href=\"/custom-heading-background.html\">Heading Background Image</a> (aka. <code class=\"highlighter-rouge\">page.heading-bg</code>) if defined in your post front-matter field.</li>\n  <li>If no heading background image found, Curtana will try to grab the first image (wrapped inside <code class=\"highlighter-rouge\">&lt;img&gt;</code>) in your post as your post thumbnail</li>\n  <li>If nothing found, it fails back to <code class=\"highlighter-rouge\">logo.png</code> located at your site root.</li>\n</ol>\n\n<p>You can always use <code class=\"highlighter-rouge\">page.thumb_force_logo</code> in your post front-matter field to override the above lookup.</p>\n\n<p>Here’s a preview on Twitter:</p>\n\n<p><img src=\"https://d349cztnlupsuf.cloudfront.net/open-graph-preview.png\" alt=\"Twitter Cards (Open Graph compatible) Preview\" /></p>",
       "excerpt": "Theme Curtana has full Open Graph and Twitter Cards support.",
       "languages": null,
       "categories": ["note"],
@@ -236,8 +236,8 @@
     ,
     {
       "title": "Jekyll Theme Compatibility",
-      "permalink": "https://naelahnordin.com/lab/amsf/jekyll-theme-compatibility.html",
-      "link": "https://naelahnordin.com/lab/amsf/jekyll-theme-compatibility.html",
+      "permalink": "https://naelahnordin.com/jekyll-theme-compatibility.html",
+      "link": "https://naelahnordin.com/jekyll-theme-compatibility.html",
       "date": "2016-11-07T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -260,8 +260,8 @@
     ,
     {
       "title": "Introducing Curtana",
-      "permalink": "https://naelahnordin.com/lab/amsf/theme-curtana.html",
-      "link": "https://naelahnordin.com/lab/amsf/theme-curtana.html",
+      "permalink": "https://naelahnordin.com/theme-curtana.html",
+      "link": "https://naelahnordin.com/theme-curtana.html",
       "date": "2016-06-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -271,7 +271,7 @@
         "url": "https://naelahnordin.com/",
         "email": "naelahnordin@gmail.com"
       },
-      "content": "<p>Curtana is the default theme of <a href=\"https://sparanoid.com/lab/amsf/\">AMSF</a> (Almace Scaffolding).</p>\n\n<h3 id=\"features\">Features</h3>\n\n<ul>\n  <li>A variant of <a href=\"https://sparanoid.com/\">sparanoid.com</a>, looking great on any modern browsers</li>\n  <li>Minimalism design, No jQuery, no <code class=\"highlighter-rouge\">everybody-shake-ur-body.js</code></li>\n  <li>Ideal for personal blog, portfolio, product blog and Tumblr-like link blog</li>\n  <li>(Maybe) <a href=\"https://github.com/sparanoid/sparanoid.com/commit/9b44b4c0f57c3dd1e828d828a95cc21b992785ce\">the first</a> template that uses <a href=\"http://www.w3.org/TR/css3-values/#viewport-relative-lengths\">viewport relative units</a></li>\n  <li>Handcrafted stylesheets. No Bootstrap or other bloated frameworks are used, unminified CSS &lt; 12 KB</li>\n  <li>Predefined Less variables make it easier to change color schemes for posts</li>\n  <li>Dynamic color scheme for code highlighters powered by <a href=\"https://sparanoid.com/lab/randomized/\">Randomized</a></li>\n  <li><a href=\"http://ogp.me/\">Open Graph</a> and <a href=\"https://dev.twitter.com/docs/cards\">Twitter Cards</a> support</li>\n  <li>No Internet Explorer support</li>\n</ul>",
+      "content": "<p>Curtana is the default theme of <a href=\"https://sparanoid.com/\">AMSF</a> (Almace Scaffolding).</p>\n\n<h3 id=\"features\">Features</h3>\n\n<ul>\n  <li>A variant of <a href=\"https://sparanoid.com/\">sparanoid.com</a>, looking great on any modern browsers</li>\n  <li>Minimalism design, No jQuery, no <code class=\"highlighter-rouge\">everybody-shake-ur-body.js</code></li>\n  <li>Ideal for personal blog, portfolio, product blog and Tumblr-like link blog</li>\n  <li>(Maybe) <a href=\"https://github.com/sparanoid/sparanoid.com/commit/9b44b4c0f57c3dd1e828d828a95cc21b992785ce\">the first</a> template that uses <a href=\"http://www.w3.org/TR/css3-values/#viewport-relative-lengths\">viewport relative units</a></li>\n  <li>Handcrafted stylesheets. No Bootstrap or other bloated frameworks are used, unminified CSS &lt; 12 KB</li>\n  <li>Predefined Less variables make it easier to change color schemes for posts</li>\n  <li>Dynamic color scheme for code highlighters powered by <a href=\"https://sparanoid.com/lab/randomized/\">Randomized</a></li>\n  <li><a href=\"http://ogp.me/\">Open Graph</a> and <a href=\"https://dev.twitter.com/docs/cards\">Twitter Cards</a> support</li>\n  <li>No Internet Explorer support</li>\n</ul>",
       "excerpt": "Curtana is the default theme of AMSF (Almace Scaffolding).",
       "languages": null,
       "categories": ["note"],
@@ -284,8 +284,8 @@
     ,
     {
       "title": "Deployment Methods",
-      "permalink": "https://naelahnordin.com/lab/amsf/deployment-methods.html",
-      "link": "https://naelahnordin.com/lab/amsf/deployment-methods.html",
+      "permalink": "https://naelahnordin.com/deployment-methods.html",
+      "link": "https://naelahnordin.com/deployment-methods.html",
       "date": "2016-03-18T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -308,8 +308,8 @@
     ,
     {
       "title": "Multiple Themes Support",
-      "permalink": "https://naelahnordin.com/lab/amsf/multiple-themes-support.html",
-      "link": "https://naelahnordin.com/lab/amsf/multiple-themes-support.html",
+      "permalink": "https://naelahnordin.com/multiple-themes-support.html",
+      "link": "https://naelahnordin.com/multiple-themes-support.html",
       "date": "2015-08-18T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -319,7 +319,7 @@
         "url": "https://naelahnordin.com/",
         "email": "naelahnordin@gmail.com"
       },
-      "content": "<p>From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See <a href=\"/lab/amsf/themes.html\">Themes</a> for more information.</p>",
+      "content": "<p>From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See <a href=\"/themes.html\">Themes</a> for more information.</p>",
       "excerpt": "From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See Themes for more information.",
       "languages": null,
       "categories": ["news"],
@@ -332,8 +332,8 @@
     ,
     {
       "title": "Welcome",
-      "permalink": "https://naelahnordin.com/lab/amsf/welcome.html",
-      "link": "https://naelahnordin.com/lab/amsf/welcome.html",
+      "permalink": "https://naelahnordin.com/welcome.html",
+      "link": "https://naelahnordin.com/welcome.html",
       "date": "2014-06-13T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -343,7 +343,7 @@
         "url": "https://naelahnordin.com/",
         "email": "naelahnordin@gmail.com"
       },
-      "content": "<p>AMSF, a.k.a. <strong>Almace Scaffolding</strong>, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.</p>\n\n<p class=\"largetype\">\n  <a href=\"/lab/amsf/getting-started.html\">Getting Started &#x27A1;&#xfe0e;</a>\n</p>\n\n<p>Go to the <a href=\"https://github.com/sparanoid/almace-scaffolding\">GitHub</a> page for downloads, bug reports, and feature requests.</p>\n\n<h2 id=\"features\">Features</h2>\n\n<ul>\n  <li>Theme switching, you can switch themes with just one command</li>\n  <li>A basic, fully configured Jekyll setup with well-defined <a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_app/feed-atom.xml\">Atom feed</a> and <a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_app/sitemap.xml\">sitemap</a></li>\n  <li><strong>Almace Scaffolding</strong> ships a sleek responsive theme <a href=\"https://github.com/amsf/amsf-curtana\">Curtana</a>, a variant of <a href=\"https://sparanoid.com/\">sparanoid.com</a>, looking great on any modern browsers</li>\n  <li>Every minified page generates only one HTTP request <sup id=\"fnref:1\"><a href=\"#fn:1\" class=\"footnote\">1</a></sup></li>\n  <li><a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_config.init.yml\">Tons of configurable settings</a> for your posts and site customization</li>\n  <li>Service Worker support for lightning fast experience</li>\n  <li>Built with Grunt.js for easy development</li>\n  <li>Travis support</li>\n</ul>\n\n<div class=\"footnotes\">\n  <ol>\n    <li id=\"fn:1\">\n      <p>Based on the theme you’re using, theme Curtana generates only one HTTP request for production build when your posts don’t have fancy sliders or other external media files.&nbsp;<a href=\"#fnref:1\" class=\"reversefootnote\">&#8617;&#xfe0e;</a></p>\n    </li>\n  </ol>\n</div>",
+      "content": "<p>AMSF, a.k.a. <strong>Almace Scaffolding</strong>, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.</p>\n\n<p class=\"largetype\">\n  <a href=\"/getting-started.html\">Getting Started &#x27A1;&#xfe0e;</a>\n</p>\n\n<p>Go to the <a href=\"https://github.com/sparanoid/almace-scaffolding\">GitHub</a> page for downloads, bug reports, and feature requests.</p>\n\n<h2 id=\"features\">Features</h2>\n\n<ul>\n  <li>Theme switching, you can switch themes with just one command</li>\n  <li>A basic, fully configured Jekyll setup with well-defined <a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_app/feed-atom.xml\">Atom feed</a> and <a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_app/sitemap.xml\">sitemap</a></li>\n  <li><strong>Almace Scaffolding</strong> ships a sleek responsive theme <a href=\"https://github.com/amsf/amsf-curtana\">Curtana</a>, a variant of <a href=\"https://sparanoid.com/\">sparanoid.com</a>, looking great on any modern browsers</li>\n  <li>Every minified page generates only one HTTP request <sup id=\"fnref:1\"><a href=\"#fn:1\" class=\"footnote\">1</a></sup></li>\n  <li><a href=\"https://github.com/sparanoid/almace-scaffolding/blob/master/_config.init.yml\">Tons of configurable settings</a> for your posts and site customization</li>\n  <li>Service Worker support for lightning fast experience</li>\n  <li>Built with Grunt.js for easy development</li>\n  <li>Travis support</li>\n</ul>\n\n<div class=\"footnotes\">\n  <ol>\n    <li id=\"fn:1\">\n      <p>Based on the theme you’re using, theme Curtana generates only one HTTP request for production build when your posts don’t have fancy sliders or other external media files.&nbsp;<a href=\"#fnref:1\" class=\"reversefootnote\">&#8617;&#xfe0e;</a></p>\n    </li>\n  </ol>\n</div>",
       "excerpt": "AMSF, a.k.a. Almace Scaffolding, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.",
       "languages": null,
       "categories": ["note"],
@@ -356,8 +356,8 @@
     ,
     {
       "title": "Getting Started",
-      "permalink": "https://naelahnordin.com/lab/amsf/getting-started.html",
-      "link": "https://naelahnordin.com/lab/amsf/getting-started.html",
+      "permalink": "https://naelahnordin.com/getting-started.html",
+      "link": "https://naelahnordin.com/getting-started.html",
       "date": "2014-06-12T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -380,8 +380,8 @@
     ,
     {
       "title": "Customizing Styles",
-      "permalink": "https://naelahnordin.com/lab/amsf/customizing-styles.html",
-      "link": "https://naelahnordin.com/lab/amsf/customizing-styles.html",
+      "permalink": "https://naelahnordin.com/customizing-styles.html",
+      "link": "https://naelahnordin.com/customizing-styles.html",
       "date": "2014-06-11T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -404,8 +404,8 @@
     ,
     {
       "title": "Configuration",
-      "permalink": "https://naelahnordin.com/lab/amsf/configuration.html",
-      "link": "https://naelahnordin.com/lab/amsf/configuration.html",
+      "permalink": "https://naelahnordin.com/configuration.html",
+      "link": "https://naelahnordin.com/configuration.html",
       "date": "2014-06-11T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -428,8 +428,8 @@
     ,
     {
       "title": "Themes",
-      "permalink": "https://naelahnordin.com/lab/amsf/themes.html",
-      "link": "https://naelahnordin.com/lab/amsf/themes.html",
+      "permalink": "https://naelahnordin.com/themes.html",
+      "link": "https://naelahnordin.com/themes.html",
       "date": "2014-06-10T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -452,8 +452,8 @@
     ,
     {
       "title": "Creating Your Own Theme",
-      "permalink": "https://naelahnordin.com/lab/amsf/creating-themes.html",
-      "link": "https://naelahnordin.com/lab/amsf/creating-themes.html",
+      "permalink": "https://naelahnordin.com/creating-themes.html",
+      "link": "https://naelahnordin.com/creating-themes.html",
       "date": "2014-06-09T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -476,8 +476,8 @@
     ,
     {
       "title": "Syntax Highlighting",
-      "permalink": "https://naelahnordin.com/lab/amsf/syntax-highlighting.html",
-      "link": "https://naelahnordin.com/lab/amsf/syntax-highlighting.html",
+      "permalink": "https://naelahnordin.com/syntax-highlighting.html",
+      "link": "https://naelahnordin.com/syntax-highlighting.html",
       "date": "2014-06-06T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -500,8 +500,8 @@
     ,
     {
       "title": "Markdown Features Test",
-      "permalink": "https://naelahnordin.com/lab/amsf/markdown-features-test.html",
-      "link": "https://naelahnordin.com/lab/amsf/markdown-features-test.html",
+      "permalink": "https://naelahnordin.com/markdown-features-test.html",
+      "link": "https://naelahnordin.com/markdown-features-test.html",
       "date": "2014-06-06T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -524,8 +524,8 @@
     ,
     {
       "title": "Markup Example",
-      "permalink": "https://naelahnordin.com/lab/amsf/markup-example.html",
-      "link": "https://naelahnordin.com/lab/amsf/markup-example.html",
+      "permalink": "https://naelahnordin.com/markup-example.html",
+      "link": "https://naelahnordin.com/markup-example.html",
       "date": "2014-06-05T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -548,8 +548,8 @@
     ,
     {
       "title": "Custom HTML Markups",
-      "permalink": "https://naelahnordin.com/lab/amsf/custom-html-markups.html",
-      "link": "https://naelahnordin.com/lab/amsf/custom-html-markups.html",
+      "permalink": "https://naelahnordin.com/custom-html-markups.html",
+      "link": "https://naelahnordin.com/custom-html-markups.html",
       "date": "2014-06-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -572,8 +572,8 @@
     ,
     {
       "title": "Custom Color Scheme",
-      "permalink": "https://naelahnordin.com/lab/amsf/custom-color-scheme.html",
-      "link": "https://naelahnordin.com/lab/amsf/custom-color-scheme.html",
+      "permalink": "https://naelahnordin.com/custom-color-scheme.html",
+      "link": "https://naelahnordin.com/custom-color-scheme.html",
       "date": "2014-05-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -596,8 +596,8 @@
     ,
     {
       "title": "Unique Post Styling via Custom CSS",
-      "permalink": "https://naelahnordin.com/lab/amsf/custom-css.html",
-      "link": "https://naelahnordin.com/lab/amsf/custom-css.html",
+      "permalink": "https://naelahnordin.com/custom-css.html",
+      "link": "https://naelahnordin.com/custom-css.html",
       "date": "2014-04-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -622,8 +622,8 @@
     ,
     {
       "title": "External Link Post",
-      "permalink": "https://naelahnordin.com/lab/amsf/external-link-post.html",
-      "link": "https://naelahnordin.com/lab/amsf/external-link-post.html",
+      "permalink": "https://naelahnordin.com/external-link-post.html",
+      "link": "https://naelahnordin.com/external-link-post.html",
       "date": "2014-02-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -646,8 +646,8 @@
     ,
     {
       "title": "Custom Heading Image",
-      "permalink": "https://naelahnordin.com/lab/amsf/custom-heading-image.html",
-      "link": "https://naelahnordin.com/lab/amsf/custom-heading-image.html",
+      "permalink": "https://naelahnordin.com/custom-heading-image.html",
+      "link": "https://naelahnordin.com/custom-heading-image.html",
       "date": "2014-02-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -670,8 +670,8 @@
     ,
     {
       "title": "Custom Heading Background",
-      "permalink": "https://naelahnordin.com/lab/amsf/custom-heading-background.html",
-      "link": "https://naelahnordin.com/lab/amsf/custom-heading-background.html",
+      "permalink": "https://naelahnordin.com/custom-heading-background.html",
+      "link": "https://naelahnordin.com/custom-heading-background.html",
       "date": "2014-02-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
@@ -694,8 +694,8 @@
     ,
     {
       "title": "GitHub Pages Setup Guide",
-      "permalink": "https://naelahnordin.com/lab/amsf/github-pages-setup.html",
-      "link": "https://naelahnordin.com/lab/amsf/github-pages-setup.html",
+      "permalink": "https://naelahnordin.com/github-pages-setup.html",
+      "link": "https://naelahnordin.com/github-pages-setup.html",
       "date": "2014-01-01T00:00:00+09:00",
       
         "modified": "2017-11-09T12:17:42+09:00",
