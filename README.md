@@ -1,9 +1,29 @@
-# [amsf.github.io](http://amsf.github.io/)
+# Nael's Knapsack -- A collection of essays
 
-This is a demo how to make [Almace Scaffolding](http://github.com/sparanoid/almace-scaffolding) work well with [GitHub Pages](http://pages.github.com/).
+[![Greenkeeper badge](https://badges.greenkeeper.io/sparanoid/almace-scaffolding.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/sparanoid/almace-scaffolding.svg)](https://travis-ci.org/sparanoid/almace-scaffolding)
+[![devDependency Status](https://david-dm.org/sparanoid/almace-scaffolding/dev-status.svg)](https://david-dm.org/sparanoid/almace-scaffolding#info=devDependencies)
+[![Built with Almace Scaffolding](https://d349cztnlupsuf.cloudfront.net/amsf-badge.svg)](https://sparanoid.com/lab/amsf/)
 
-## Things you should take care of
+`AMSF`, a.k.a. **Almace Scaffolding**, a super-fast Jekyll framework. Supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.
 
-- You should change your homepage title in [`index.html`](_amsf/_app/index.html)
-- Some variables such as `domain`, `url`, `feed`, and `name` in [`_config.yml`](_amsf/_config.yml)
-- If you changed `feed` variables in `var.yml`, you should also change permalink structure in [`feed-atom.xml`](_amsf/_app/feed-atom.xml)
+-----
+
+## [Getting Started](https://sparanoid.com/lab/amsf/getting-started.html)
+
+## Donate
+
+Wanna buy me a cup of coffee? [Great](https://sparanoid.com/donate/).
+
+## Author
+
+**Tunghsiao Liu**
+
+- Twitter: @[tunghsiao](https://twitter.com/tunghsiao)
+- GitHub: @[sparanoid](https://github.com/sparanoid)
+
+## Licenses
+
+All files and directories are licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) unless explicitly stated.
+
+© Sparanoid, Inc., Rights reserved as indicated above.

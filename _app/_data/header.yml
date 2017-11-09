@@ -1,0 +1,11 @@
+- title: __home__
+  url:   /
+
+- title: About
+  url:   /about/
+
+- title: Notes
+  url:   /notes/
+
+- title: Journal
+  url:   /journal/
