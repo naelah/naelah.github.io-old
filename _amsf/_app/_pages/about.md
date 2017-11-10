@@ -3,9 +3,10 @@ layout: page
 title: About
 permalink: /about/
 desc: 關於・について・Introduction
+scheme-link: "#947CB0"
 ---
 
-Sparanoid is a design studio operated by Naelah Nordin. You can ping me on [Twitter](https://twitter.com/tunghsiao) or send correspondence to [naelah](mailto:t@sparanoid.com).
+Nael's Knapsack is a repository for essays written by Naelah Nordin. Inspired by the 10th engineer who gasped after knowing that I do programming for a living, I wanted to show how simple programming can be without the mumbo jumbo of tech vernacular.
 
 ## Knapsack
 
@@ -13,16 +14,23 @@ The knapsack problem or rucksack problem is a problem in combinatorial optimizat
 
 ## The Author
 
-Naelah Nordin, a computer science gradute from International Islamic University Malaysia, currently working in Tokyo as a Ruby on Rails and iOS developer.
+Naelah Nordin is a 24 year old ('93) software developer, graphic designer and aspiring writer. Graduted with a computer science bachelor degree from International Islamic University Malaysia in 2016, she packed her bags in the summer of 2017 and migrated to Tokyo where she currently works in Ruby on Rails and iOS mobile application development.
 
 
 ## The website
 
-hosted on github using github-pages. Using [Almace Scaffolding]() which is a Jekyll framework but it's somehow incompatible with gh-pages even though (it's complicated) so a workaround to it is by displaying only the generated static pages so if you look at the repository, the codes are a bit jumbled up and messy and really is not good code refactoring but there's a price to pay for aesthetics. 
+hosted on [github-pages](https://pages.github.com). Theme used is Curtana from [Almace Scaffolding](https://sparanoid.com/lab/amsf/) which is a Jekyll framework but it's somehow incompatible with gh-pages even though most blogs hosted on gh-pages use Jekyll as their blogging platform (it's complicated). A workaround to it is by displaying only the generated static pages so if you look at the repository, the codes are a bit jumbled up and messy and really not good code refactoring but there's a price to pay for aesthetics. 
 
 ## Contribute
 
-Suggest 
+<em>Help translate an article in Bahasa or 日本語<sup>1</sup></em>
+
+[Suggest a topic or ask anything](mailto:naelahnordin@gmail.com) regarding programming or algorithms 
+
+Support my work by buying me [a plate of sushi](https://www.paypal.me/naelah).
+
 
 
 All posts are &copy; Naelah Nordin, all rights reserved.
+-------
+<small>1. Phase II is providing a multilingual option for articles. Start implementing after Phase I ends.</small>

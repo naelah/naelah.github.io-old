@@ -2219,8 +2219,8 @@ Love this plugin? please consider &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
             &lt;p&gt;This is an example how to change your post color scheme for specific posts. You can simply add the following variables to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scheme-text: &quot;#0029ff&quot;
-scheme-link: &quot;#ff00b4&quot;
-scheme-hover: &quot;#ff00b4&quot;
+scheme-link: &quot;#BE90D4&quot;
+scheme-hover: &quot;#BE90D4&quot;
 scheme-code: &quot;#ad00ff&quot;
 scheme-bg: &quot;#00ebff&quot;
 scheme-hero-text: &quot;#00ebff&quot;

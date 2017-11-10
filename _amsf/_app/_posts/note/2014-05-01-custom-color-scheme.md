@@ -4,8 +4,8 @@ title: Custom Color Scheme
 category: note
 tags: curtana
 scheme-text: "#0029ff"
-scheme-link: "#ff00b4"
-scheme-hover: "#ff00b4"
+scheme-link: "#BE90D4"
+scheme-hover: "#BE90D4"
 scheme-code: "#ad00ff"
 scheme-bg: "#00ebff"
 scheme-hero-text: "#00ebff"
@@ -17,8 +17,8 @@ This is an example how to change your post color scheme for specific posts. You 
 
 ```
 scheme-text: "#0029ff"
-scheme-link: "#ff00b4"
-scheme-hover: "#ff00b4"
+scheme-link: "#BE90D4"
+scheme-hover: "#BE90D4"
 scheme-code: "#ad00ff"
 scheme-bg: "#00ebff"
 scheme-hero-text: "#00ebff"
