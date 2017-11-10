@@ -5,15 +5,15 @@ permalink: /about/
 desc: 關於・について・Introduction
 ---
 
-This is an example About page.
-
-Sparanoid is a design studio operated by Tunghsiao Liu. You can ping me on [Twitter](https://twitter.com/tunghsiao) or send correspondence to [t@sparanoid.com](mailto:t@sparanoid.com).
+Sparanoid is a design studio operated by Naelah Nordin. You can ping me on [Twitter](https://twitter.com/tunghsiao) or send correspondence to [naelah](mailto:t@sparanoid.com).
 
 ## Knapsack
 
-
+The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
 
 ## The Author
+
+Naelah Nordin, a computer science gradute from International Islamic University Malaysia, currently working in Tokyo as a Ruby on Rails and iOS developer.
 
 
 ## The website
@@ -22,13 +22,7 @@ hosted on github using github-pages. Using [Almace Scaffolding]() which is a Jek
 
 ## Contribute
 
-## Colophon
+Suggest 
 
-[AMSF](https://sparanoid.com/) ([Source](https://github.com/sparanoid/sparanoid.com)) -
-[GitHub](https://github.com/) -
-[CloudFront](https://aws.amazon.com/cloudfront/) -
-[Textmate](https://macromates.com/)
 
-All posts are &copy; Sparanoid, Inc., all rights reserved.
-
-*[AMSF]: Almace Scaffolding
+All posts are &copy; Naelah Nordin, all rights reserved.
