@@ -10,7 +10,7 @@ Nael's Knapsack is a repository for essays written by Naelah Nordin. Inspired by
 
 # Knapsack
 
-The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
+The knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
 
 # The Author
 
@@ -18,14 +18,15 @@ Naelah Nordin is a 24 year old ('93) software developer, graphic designer and as
 
 # The website
 
-hosted on [github-pages](https://pages.github.com). Theme used is Curtana from [Almace Scaffolding](https://sparanoid.com/lab/amsf/) which is a Jekyll framework but it's somehow incompatible with gh-pages even though most blogs hosted on gh-pages use Jekyll as their blogging platform (it's complicated). A workaround to it is by displaying only the generated static pages so if you look at the repository, the codes are a bit jumbled up and messy and really not good code refactoring but there's a price to pay for aesthetics. 
+Hosted on [github-pages](https://pages.github.com) using a Jekyll framework [Almace Scaffolding](https://sparanoid.com/lab/amsf/)
 
 
 # Contribute
 
 
-[Suggest a topic or send in your programming homework](mailto:naelahnordin@gmail.com)
-Support my work by buying me [a plate of sushi](https://www.paypal.me/naelah).
+- [Suggest a topic or send in your programming homework](mailto:naelahnordin@gmail.com)
+- Buy me [a plate of sushi](https://www.paypal.me/naelah).
+
 
 
 
