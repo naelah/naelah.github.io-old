@@ -10,6 +10,12 @@ desc: 随筆・	アーティクル・Articles
   {% include themes/{{ site.amsf_theme }}/includes/page-item.html %}
 {% endfor %}
 
+<h2>Pop Culture</h2>
+{% for post in site.tags.popculture %}
+  {% include themes/{{ site.amsf_theme }}/includes/page-item.html %}
+{% endfor %}
+
+
 <h2>Miscellaneous</h2>
 {% for post in site.tags.misc %}
   {% include themes/{{ site.amsf_theme }}/includes/page-item.html %}
