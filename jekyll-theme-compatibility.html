@@ -1,0 +1,9 @@
+<p>With recent release of Jekyll, it gets the built-in ability to support <a href="https://jekyllrb.com/docs/themes/">themes</a>, since we’ve already added theme support in 2015, the original config variables <code class="highlighter-rouge">theme</code> would be conflicted with the built-in one.</p>
+
+<p>To solve this issue, I’ve rename our <code class="highlighter-rouge">theme</code> option to <code class="highlighter-rouge">amsf_theme</code>. And here’s what you need to do to resovle compatibility issues after upgrading to latest Almace Scaffolding:</p>
+
+<ul>
+  <li>Rename your original <code class="highlighter-rouge">theme</code> option in <code class="highlighter-rouge">_amsf.yml</code> to <code class="highlighter-rouge">amsf_theme</code>.</li>
+  <li>Add <code class="highlighter-rouge">amsf_theme_url</code> with your theme Git URL.</li>
+  <li>Replace all <code class="highlighter-rouge">site.theme</code> with <code class="highlighter-rouge">site.amsf_theme</code> in your page templates.</li>
+</ul>
