@@ -133,13 +133,21 @@
 
 <!doctype html>
 
+<!--
+  Apply head only for dev environment, this is required for jekyll to
+  insert livereload scripts
+-->
+
+  <head>
+
+
 
   <meta charset="utf-8">
 
 
 <title>Notes - nael.</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <!-- Define a description for better SEO result -->
 <meta name="description" content="注意・ノート・Notes">
@@ -287,10 +295,11 @@
 <!-- DNS prefetching for static files -->
 
 
-<!-- browser-sync, don't remove this -->
-<!-- BS_INSERT -->
-
 <!-- Head hooks -->
+
+
+
+  </head>
 
 
 <!-- Open Graph and Twitter Cards support, more info: https://dev.twitter.com/docs/cards -->
@@ -637,6 +646,23 @@
 
 <h2>Algorithms</h2>
 
+<p><!-- List snippets --></p>
+
+<!-- Dynamic link color based on post color scheme -->
+
+<!-- Dynamic background color based on post color scheme -->
+
+<section class="list">
+  <h1>
+    <!-- Item title -->
+    <a href="/start.html">Knapsack</a>
+
+    <!-- External link indicator -->
+    
+  </h1>
+</section>
+
+
   </div>
 
 </article>
@@ -648,15 +674,8 @@
 
   <footer class="footer">
     <ul>
-      <li><a href="https://nael.my'">nael.</a></li>
-
-      
-        <li><a href="https://sparanoid.com/" title="Almace Scaffolding">AMSF</a></li>
-      
-
-      
-
-      <li><a href="/feed.xml" title="Feed - Atom (The Atom Syndication Format)">Atom</a></li>
+      <li><a href="/">nael.</a></li>
+      <li>&copy; Naelah Nordin, all rights reserved.</li>
     </ul>
   </footer>
 
