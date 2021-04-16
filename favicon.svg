@@ -1,1 +1,10 @@
-<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg"><title>Almace Scaffolding</title><g transform="translate(-30 -30)" fill="none" fill-rule="evenodd"><circle fill="#FFF" cx="120" cy="120" r="90"/><path d="M195 120c0-41.42-33.58-75-75-75s-75 33.58-75 75c0 21.562 9.1 40.998 23.666 54.68l2.673-27.273c.67-6.866 6.81-12.43 13.716-12.43 6.903 0 11.955 5.557 11.282 12.43l-4.144 42.27A74.834 74.834 0 0 0 120 195a76.08 76.08 0 0 0 5.426-.193l8.32-84.9c.674-6.866 6.814-12.43 13.72-12.43 6.903 0 11.954 5.557 11.28 12.43l-7.68 78.377C176.983 176.474 195 150.34 195 120z" fill="#BE90D4"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>favicon </title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="favicon-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M180.5,455 L81,455 C130.5,426 132.5,335 132.5,335 C136.5,425 180.5,455 180.5,455 Z M386,455 L325.5,455 L88,61.5 L75,56 L193.5,56 L370,355.5 L386,292.5 L386,455 Z M386,166.5 C382.5,88 339,56 339,56 L437.5,56 C388.5,81.5 386,166.5 386,166.5 Z" id="N" fill="#C29BC9"></path>
+    </g>
+</svg>

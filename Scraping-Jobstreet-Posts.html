@@ -1,0 +1,440 @@
+<!doctype html>
+
+<html lang="en">
+
+<!--
+  Apply head only for dev environment, this is required for jekyll to
+  insert livereload scripts
+-->
+
+  <head>
+
+
+
+  <meta charset="utf-8">
+
+
+<title>Jobstreet Scraper - Naelah Nordin</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Define a description for better SEO result -->
+<meta name="description" content="Scraping Jobstreet's job postings using Python・clone on  GitHub">
+
+<!-- Cheome Web App theme color -->
+<meta name="theme-color" content="#BA90C2">
+
+<!-- Feed URL -->
+<link rel="alternate" href="/feed.xml" type="application/atom+xml">
+
+<!-- Site icons -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.png" type="image/png"><link rel="icon" href="/favicon.svg?assets-inline-assets-keep" sizes="any" type="image/svg+xml"><link rel="mask-icon" href="/mask-icon.svg" color="#BA90C2">
+
+<!-- Chrome Web App manifest -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="/assets/themes/curtana/css/app.css?assets-inline">
+
+<!-- Canonical links, avoid duplicate content problems -->
+<link rel="canonical" href="http://0.0.0.0:4321/Scraping-Jobstreet-Posts.html">
+
+<!-- DNS prefetching for static files -->
+
+
+<!-- Head hooks -->
+
+
+
+  </head>
+
+<!-- Open Graph and Twitter Cards support -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Naelah Nordin">
+<meta property="og:title" content="Jobstreet Scraper">
+<meta property="og:url" content="http://0.0.0.0:4321/Scraping-Jobstreet-Posts.html">
+<meta property="og:description" content="Scraping Jobstreet's job postings using Python・clone on  GitHub">
+<meta property="og:image" content="assets/img/jobstreet-screenshot-1.png">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+  <meta name="twitter:site" content="@naelnord">
+
+
+
+  <meta name="twitter:creator" content="@naelnord">
+
+
+
+  <meta property="article:published_time" content="2021-04-12T00:00:00+08:00">
+  <meta property="article:modified_time" content="2021-04-16T13:51:40+08:00">
+  <meta name="twitter:label1" value="Words">
+  <meta name="twitter:data1" value="3198 words">
+  <meta name="twitter:label2" value="Reading time">
+  <meta name="twitter:data2" value="15 mins">
+
+<!-- Post specified styles -->
+<style data-assets-inline>
+  :root {
+    
+
+    
+
+    
+
+    
+  }
+
+  body {
+    
+  }
+
+  
+  
+    
+</style>
+<!-- Main navigation with current page / categoriy highlighted -->
+<nav class="navigation">
+  <ul>
+    <li >
+        <a href="/">Naelah Nordin</a>
+      </li>
+    <li >
+        <a href="/about/">About</a>
+      </li>
+    <li >
+        <a href="/journal/">Journal</a>
+      </li>
+    <li >
+        <a href="/notes/">Notes</a>
+      </li>
+    <li class=current>
+        <a href="/projects/">Projects</a>
+      </li>
+    
+  </ul>
+</nav>
+<!-- Main content wrap -->
+<main class="content " role=main>
+  <!-- Post-wide custom CSS -->
+
+
+<!-- Article wrapper, limit width -->
+<article lang="en">
+
+  <!-- Post title -->
+  <header style="     ">
+
+    <h1 class="" title="Jobstreet Scraper" data-title="Jobstreet Scraper">
+      Jobstreet Scraper<span class="dot dot--post"> </span>
+    </h1>
+
+    
+      <small>
+        By <span rel="author">Naelah Nordin</span>
+        on <time datetime="2021-04-12T00:00:00+08:00">Apr 12, 2021</time>
+      </small>
+    
+
+    
+      <small>Scraping Jobstreet's job postings using Python・clone on <a href="https://github.com/sparanoid/almace-scaffolding"> GitHub</a></small>
+    
+
+  </header>
+
+  <!-- Post content -->
+  <div class="post-content">
+    <p>Each website is built by different individuals so there is no one magic script that can scrape different websites because the art of scraping lies in deconstructing the html elements into separate objects that we can extract or “scrape” the information from. Of course there are scraping tools out there that automate these scripts based on your preference (literally google free web scraping tools, there are a bunch of them). I have tried several of these tools and I always end up getting frustrated and going back to writing the codes myself because a) they always have a pricing tier despite claiming to be free, and b) the process is overcomplicated and some websites are just not built intuitively that these tools can easily automate. This tutorial specifies the necessary steps to scrape data from Jobstreet Malaysia but the process of crawling and scraping boils down to a few basic steps that can be applied to almost any website.</p>
+
+<h1 id="web-scraping-vs-web-crawling">Web Scraping vs. Web Crawling</h1>
+
+<p>These two terms get thrown out a lot when it comes to automating data acquisition from the internet. Sometimes it is used interchangably to mean the same thing but they are actually different methods that are used together in achieving the same goal which is to extract information from a website that is presented in a way that has a pattern. This pattern is the key in writing codes that can iterate from one page to another. For example let’s look at jobstreet’s search page.</p>
+
+<p class="browser"><img src="assets/img/jobstreet-screenshot-1.png" alt="Image" /></p>
+
+<p>There are several patterns here that we can leverage on. At this point you have to ask yourself, how do I get all these links? If you weren’t aiming to crawl and to scrape, how would you manually do it? In this example, jobstreet provides a paginated result page. There are a fixed amount of number of links in each page and they are all in similar looking boxes which suggests that the styling would use the same ID, this is important for scraping later, but as for now, in order to crawl and get all the relevant links, you need to determine how the data is populated.</p>
+
+<p>Another example is Facebook which does not have pagination, on the contrary it uses infinite scrolling so the method of crawling is completely different. Even if a website has pagination, we need to determine how the website processes user input and goes to the next page. Most commonly, websites implement URL parameters which means the number of page is in the url like <code class="language-plaintext highlighter-rouge">www.website.com?page=2</code> or <code class="language-plaintext highlighter-rouge">www.website.com/2/</code>. In these cases, going from one page to another is pretty straightforward. However, some websites implementing things like servlets and do not take parameters in the URL are trickier to crawl but still possible. You can maybe imitate certain buttons clicking or imitate scrolling, anything is possible.</p>
+
+<ol>
+  <li>
+    <p>Search keyword is appended in the url</p>
+
+    <p>Because jobstreet uses URL parameters, it’s just a matter of modifying the URL in each iteration. Here we can also see that the keyword is appended at the end of the URL as such, <code class="language-plaintext highlighter-rouge">www.jobstreet.com.my/en/job-search/data-jobs</code>, this allows for querying multiple keywords.</p>
+  </li>
+  <li>
+    <p>There are 1832 job postings, with 30 jobs listed on each page</p>
+
+    <p>This means we only need math to determine how many iterations we need to go through all pages. We determine the class name of the text <code class="language-plaintext highlighter-rouge">1832 jobs</code> by inspecting the element and from there we can simply do the following</p>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">get_page_number</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+    <span class="c1"># assuming total_jobs is processed and converted to integer
+</span>    <span class="c1"># total_jobs divide by 30 pages and take the ceiling
+</span>    <span class="n">page_number</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">result</span><span class="o">/</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">page_number</span></code></pre></figure>
+
+<p>So now we have the page number, 8 which allows us to crawl all 8 page results and scrape the relevant links.</p>
+
+<h1 id="is-it-legal">Is it Legal?</h1>
+
+<p>The short answer is an astounding <strong>Yes!</strong> We are not hacking into anyone’s private account. We are simply automating the process of one person manually clicking through a website 200 times and copying and pasting information, into a program that we can leave for hours and maybe days that would ultimately save our time but has no damaging consequences to the website owners. Ethically though, what we do with the information is another issue and the fact that scraping as a tool for morally ambiguous activity is up for debate, like how <a href="https://www.metro.us/everything-to-know-about-facemash-the-site-zuckerberg-created-in-college-to-rank-hot-women/">Mark Zuckerberg scraped images of women in sorority houses in Harvard</a> to create a website comparing which woman is hotter is unanimously frowned upon but it is 100% legal.</p>
+
+<h1 id="getting-started">Getting Started</h1>
+
+<p>To run the script, simply</p>
+
+<ol>
+  <li>Clone <a href="https://github.com/naelah/jobstreet-scraper">this Github repository</a></li>
+  <li>Create a virtual python environment (optional). Run the following script in terminal
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m venv venv
+source venv/bin/activate
+</code></pre></div>    </div>
+  </li>
+  <li>Once the environment is activated, install the requirements
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -r requirements.txt
+</code></pre></div>    </div>
+  </li>
+  <li>Download <a href="https://chromedriver.chromium.org/">chromedriver</a> based on your chrome version and  <a href="https://stackoverflow.com/questions/4423061/view-http-headers-in-google-chrome">determine your version and header here</a></li>
+  <li>Modify <code class="language-plaintext highlighter-rouge">jobstreet_scraper.py</code> accordingly</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Modify headers to match your device
+</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'User-Agent'</span><span class="p">:</span><span class="s">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'</span><span class="p">}</span>
+
+<span class="c1"># Insert path to your chromedriver here
+</span><span class="n">path</span> <span class="o">=</span> <span class="s">"/usr/local/Caskroom/chromedriver/88.0.4324.96/chromedriver"</span>
+<span class="p">...</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="c1"># determine the keywords that you want to query, it can be one or more but must be in a list
+</span>    <span class="n">key_words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'agriculture'</span><span class="p">,</span><span class="s">'crop'</span><span class="p">]</span>
+    </code></pre></figure>
+
+<p>Run <code class="language-plaintext highlighter-rouge">python jobstreet_scraper.py</code> in terminal and you should see the scraping process starting.</p>
+
+<h1 id="breakdown-of-functions">Breakdown of functions</h1>
+<p>The script consists a few key steps in successfully crawling and scraping which are</p>
+
+<p><strong>1. Configure driver to browse web pages &amp; BeautifulSoup4 to scrape html codes</strong>
+This part is very important because it is what automates the process. The driver’s purpose is to visit the pages that we tell it to. So in this code snippet, we have determined a URL template which essentially accepts the parameters and generate a fully functional URL because we have identified its pattern. From here, we tell the driver to go to that URL and then we use BeautifulSoup to identify the html elements that exist on the page. This is how scraping is possible because every website’s user interface is in html &amp; CSS, which means there are html tags like <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code> amongst many other tags that wraps around information which allows for a beautiful and readable user interface. These elements normally have unique IDs for specific stylings. Reuse of the same style is possible with the same ID so what we need to do is basically identify that class name or ID and we can deconstruct the codes to it’s barest element which is text.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> 
+<span class="kn">from</span> <span class="nn">selenium.webdriver</span> <span class="kn">import</span> <span class="n">Chrome</span>
+
+<span class="c1"># configuration
+</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'User-Agent'</span><span class="p">:</span><span class="s">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'</span><span class="p">}</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">"/usr/local/Caskroom/chromedriver/88.0.4324.96/chromedriver"</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1"># url template accepting keyword and page number
+</span><span class="n">base_url</span> <span class="o">=</span> <span class="s">"https://www.jobstreet.com.my/en/job-search/{}-jobs/{}/"</span>
+
+<span class="c1"># url generation https://www.jobstreet.com.my/en/job-search/agriculture-jobs/1/
+</span><span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># visits the specified url
+</span><span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># parses html page into selectable elements
+</span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span></code></pre></figure>
+
+<p>Now that we know how to go from page to page, we’ll start back at the beginning where we have certain keywords to query.
+<strong>2. Iterate through keywords</strong></p>
+
+<p>If you have only one keyword to query, then you might not need the following code snippet but in most cases, you want to scrape several keywords, so essentially what you need to do is iterate through the keywords one by one and once you have the resulting dataframe for each keywords, combine all the dataframe into one.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">key_words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'agriculture'</span><span class="p">,</span><span class="s">'crop'</span><span class="p">]</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">key_words</span><span class="p">:</span>
+    <span class="n">key_df</span> <span class="o">=</span> <span class="n">page_crawler</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">key_df</span><span class="p">)</span>
+    </code></pre></figure>
+
+<p><strong>2. Get Page number</strong>
+As mentioned briefly earlier, we need to know how many times to iterate. Alternatively, you can also do a while loop to constantly loop and go to the next page until there are no more results. This can only work if the website does not redirect you to another page once there’s no more results left which is unfortunately what jobstreet does so in this case we determine the number of pages there are by looking at the number of results stated. In order to scrape that particular text, we inspect the element by going to <code class="language-plaintext highlighter-rouge">More Tools &gt; Developer Tools</code> which allows us to use the element picker tool and determine the html code for that element. For jobstreet, this is the code related to the result page</p>
+
+<p class="browser"><img src="assets/img/jobstreet-screenshot-2.png" alt="Image" /></p>
+
+<p>As you can see, the text is wrapped around a span tag with the class name <code class="language-plaintext highlighter-rouge">"FYwKg _2Bz3E C6ZIU_0 _1_nER_0 _2DNlq_0 _29m7__0 _1PM5y_0"</code> which is quite common for an element to have more than one css class which is fine in our case because we want a singular value.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"FYwKg _2Bz3E C6ZIU_0 _1_nER_0 _2DNlq_0 _29m7__0 _1PM5y_0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"sQuda_0"</span><span class="nt">&gt;</span>1-30<span class="nt">&lt;/strong&gt;</span> of 1,832 jobs 
+<span class="nt">&lt;/span&gt;</span></code></pre></figure>
+
+<p>The way of scraping text that is wrapped in a span tag as such would be like the following codes. After the text is scraped, our job is not done because we want to perform some calculations on the number which means it needs to be converted from string to integer. It’s not as straightforward because the whole sentence contains actual words so what we need to do is split the string into a list of strings which would allow us to choose the string with the just the number, which is the third element from the right. From there, we convert it into integer and perform the calculation.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_page_number</span><span class="p">(</span><span class="n">keyword</span><span class="p">):</span>
+    <span class="c1">#input: keyword for job_postings
+</span>    <span class="c1">#output: number of pages
+</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">result_text</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"span"</span><span class="p">,{</span><span class="s">"class"</span><span class="p">:</span> <span class="s">"FYwKg _2Bz3E C6ZIU_0 _1_nER_0 _2DNlq_0 _29m7__0 _1PM5y_0"</span><span class="p">})</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">result_text</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">result_text</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">page_number</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">result</span><span class="o">/</span><span class="mi">30</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">page_number</span>
+    </code></pre></figure>
+
+<p><strong>3. Iterate through pages</strong></p>
+
+<p>So now that we have a page number, what we need to do is iterate exactly 8 times with each iteration updating the page number parameter in the url as well as scraping the links on each page, repeating the steps before of inspecting elements and determining the tag and class name of the element that we want to scrape, in this case we want links so normally it is <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag and the class name should be consistent because the styling is the same for all results.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">page_crawler</span><span class="p">(</span><span class="n">keyword</span><span class="p">):</span>
+    <span class="c1"># input: keyword for job postings
+</span>    <span class="c1"># output: dataframe of links scraped from each page
+</span>
+    <span class="c1"># page number
+</span>    <span class="n">page_number</span> <span class="o">=</span> <span class="n">get_page_number</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span>
+    <span class="n">job_links</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">page_number</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Loading page {} ...'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+    
+        <span class="c1">#extract all job links
+</span>        <span class="n">links</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'a'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'DvvsL_0 _1p9OP'</span><span class="p">})</span>
+        <span class="n">job_links</span> <span class="o">+=</span> <span class="n">links</span>
+ 
+    <span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">job_links</span><span class="p">:</span>
+        <span class="n">job_link</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="s">'href'</span><span class="p">].</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">'?'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">jobs</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">keyword</span><span class="p">,</span> <span class="n">job_link</span><span class="p">]</span> <span class="o">+</span> <span class="n">job_page_scraper</span><span class="p">(</span><span class="n">job_link</span><span class="p">))</span>
+
+    <span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'keyword'</span><span class="p">,</span> <span class="s">'link'</span><span class="p">,</span> <span class="s">'job_id'</span><span class="p">,</span> <span class="s">'job_title'</span><span class="p">,</span> <span class="s">'job_expired'</span><span class="p">,</span> <span class="s">'job_confidential'</span><span class="p">,</span> <span class="s">'job_salary_max'</span><span class="p">,</span> <span class="s">'job_salary_max'</span><span class="p">,</span> <span class="s">'job_salary_currency'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">,</span> <span class="s">'job_post_date'</span><span class="p">,</span> <span class="s">'job_internship'</span><span class="p">,</span> <span class="s">'company_website'</span><span class="p">,</span> <span class="s">'company_avgProcessTime'</span><span class="p">,</span> <span class="s">'company_registrationNo'</span><span class="p">,</span> <span class="s">'company_workingHours'</span><span class="p">,</span> <span class="s">'company_facebook'</span><span class="p">,</span> <span class="s">'company_size'</span><span class="p">,</span> <span class="s">'company_dressCode'</span><span class="p">,</span> <span class="s">'company_nearbyLocations'</span><span class="p">,</span> <span class="s">'company_overview'</span><span class="p">,</span> <span class="s">'job_description'</span><span class="p">,</span> <span class="s">'job_summary'</span><span class="p">,</span> <span class="s">'job_requirement_career_level'</span><span class="p">,</span> <span class="s">'job_requirement_fieldOfStudy'</span><span class="p">,</span> <span class="s">'job_requirement_yearsOfExperience'</span><span class="p">,</span> <span class="s">'job_requirement_qualification'</span><span class="p">,</span> <span class="s">'job_requirement_skill'</span><span class="p">,</span> <span class="s">'job_employment_type'</span><span class="p">,</span> <span class="s">'job_languages'</span><span class="p">,</span> <span class="s">'job_benefits'</span><span class="p">,</span> <span class="s">'job_apply_url'</span><span class="p">,</span> <span class="s">'job_location_zipcode'</span><span class="p">,</span> <span class="s">'job_location'</span><span class="p">,</span> <span class="s">'job_country'</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result_df</span>
+    </code></pre></figure>
+
+<p><strong>4. Time delay to avoid suspicion</strong></p>
+
+<p>Sometimes it’s important to delay a process for a certain amount of time because we might be causing some heavy traffic in such a short time which could lead to some suspision. Therefore for some websites, it is important to add a delay of 1 second or 2 in obvious junctions of the project. If the website has no issue, then you can skip this part.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+<p><strong>5. Scrape relevant data</strong></p>
+
+<p>Now we have the links, the next step is to go to each link and scrape relevant informatino. Normally we would repeat the process of inspecting elements and such. However, if you’re lucky, some websites include json format of the information in the website’s script so it makes your job easier because the key is consistent throughout.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">job_page_scraper</span><span class="p">(</span><span class="n">link</span><span class="p">):</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s">"https://www.jobstreet.com.my"</span><span class="o">+</span><span class="n">link</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"scraping..."</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">scripts</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">"script"</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">script</span> <span class="ow">in</span> <span class="n">scripts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">script</span><span class="p">.</span><span class="n">contents</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">script</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s">'window.REDUX_STATE = '</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">:</span>
+                <span class="n">jsonStr</span> <span class="o">=</span> <span class="n">script</span><span class="p">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">jsonStr</span> <span class="o">=</span> <span class="n">jsonStr</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'window.REDUX_STATE = '</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">jsonStr</span> <span class="o">=</span> <span class="n">jsonStr</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'}}}};'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">jsonStr</span> <span class="o">=</span> <span class="n">jsonStr</span><span class="o">+</span><span class="s">"}}}}"</span>
+                <span class="n">jsonObj</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">)</span>
+    
+    <span class="n">job</span> <span class="o">=</span> <span class="n">jsonObj</span><span class="p">[</span><span class="s">'details'</span><span class="p">]</span>
+    <span class="n">job_id</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span>
+    <span class="n">job_expired</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'isExpired'</span><span class="p">]</span>
+    <span class="n">job_confidential</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'isConfidential'</span><span class="p">]</span>
+    <span class="n">job_salary_min</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'salary'</span><span class="p">][</span><span class="s">'min'</span><span class="p">]</span>
+    <span class="n">job_salary_max</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'salary'</span><span class="p">][</span><span class="s">'max'</span><span class="p">]</span>
+    <span class="n">job_salary_currency</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'salary'</span><span class="p">][</span><span class="s">'currency'</span><span class="p">]</span>
+    <span class="n">job_title</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'jobTitle'</span><span class="p">]</span>
+    <span class="n">company</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'company'</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span>
+    <span class="n">job_post_date</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'postedDate'</span><span class="p">]</span>
+    <span class="n">job_internship</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'header'</span><span class="p">][</span><span class="s">'isInternship'</span><span class="p">]</span>
+    <span class="n">company_website</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companyWebsite'</span><span class="p">]</span>
+    <span class="n">company_avgProcessTime</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'avgProcessTime'</span><span class="p">]</span>
+    <span class="n">company_registrationNo</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'registrationNo'</span><span class="p">]</span>
+    <span class="n">company_workingHours</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'workingHours'</span><span class="p">]</span>
+    <span class="n">company_facebook</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'facebook'</span><span class="p">]</span>
+    <span class="n">company_size</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'size'</span><span class="p">]</span>
+    <span class="n">company_dressCode</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'dressCode'</span><span class="p">]</span>
+    <span class="n">company_nearbyLocations</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companySnapshot'</span><span class="p">][</span><span class="s">'nearbyLocations'</span><span class="p">]</span>
+    <span class="n">company_overview</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'companyDetail'</span><span class="p">][</span><span class="s">'companyOverview'</span><span class="p">][</span><span class="s">'html'</span><span class="p">]</span>
+    <span class="n">job_description</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobDescription'</span><span class="p">][</span><span class="s">'html'</span><span class="p">]</span>
+    <span class="n">job_summary</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'summary'</span><span class="p">]</span>
+    <span class="n">job_requirement_career_level</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'careerLevel'</span><span class="p">]</span>
+    <span class="n">job_requirement_yearsOfExperience</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'yearsOfExperience'</span><span class="p">]</span>
+    <span class="n">job_requirement_qualification</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'qualification'</span><span class="p">]</span>
+    <span class="n">job_requirement_fieldOfStudy</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'fieldOfStudy'</span><span class="p">]</span>
+    <span class="c1">#job_requirement_industry = job['jobDetail']['jobRequirement']['industryValue']['label']
+</span>    <span class="n">job_requirement_skill</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'skills'</span><span class="p">]</span>
+    <span class="n">job_employment_type</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'employmentType'</span><span class="p">]</span>
+    <span class="n">job_languages</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'languages'</span><span class="p">]</span>
+    <span class="n">job_benefits</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'jobDetail'</span><span class="p">][</span><span class="s">'jobRequirement'</span><span class="p">][</span><span class="s">'benefits'</span><span class="p">]</span>
+    <span class="n">job_apply_url</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'applyUrl'</span><span class="p">][</span><span class="s">'url'</span><span class="p">]</span>
+    <span class="n">job_location_zipcode</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'location'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'locationId'</span><span class="p">]</span>
+    <span class="n">job_location</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'location'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'location'</span><span class="p">]</span>
+    <span class="n">job_country</span> <span class="o">=</span> <span class="n">job</span><span class="p">[</span><span class="s">'sourceCountry'</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">job_id</span><span class="p">,</span> <span class="n">job_title</span><span class="p">,</span> <span class="n">job_expired</span><span class="p">,</span> <span class="n">job_confidential</span><span class="p">,</span> <span class="n">job_salary_max</span><span class="p">,</span> <span class="n">job_salary_max</span><span class="p">,</span> <span class="n">job_salary_currency</span><span class="p">,</span> <span class="n">company</span><span class="p">,</span> <span class="n">job_post_date</span><span class="p">,</span> <span class="n">job_internship</span><span class="p">,</span> <span class="n">company_website</span><span class="p">,</span> <span class="n">company_avgProcessTime</span><span class="p">,</span> <span class="n">company_registrationNo</span><span class="p">,</span> <span class="n">company_workingHours</span><span class="p">,</span> <span class="n">company_facebook</span><span class="p">,</span> <span class="n">company_size</span><span class="p">,</span> <span class="n">company_dressCode</span><span class="p">,</span> <span class="n">company_nearbyLocations</span><span class="p">,</span> <span class="n">company_overview</span><span class="p">,</span> <span class="n">job_description</span><span class="p">,</span> <span class="n">job_summary</span><span class="p">,</span> <span class="n">job_requirement_career_level</span><span class="p">,</span> <span class="n">job_requirement_fieldOfStudy</span><span class="p">,</span> <span class="n">job_requirement_yearsOfExperience</span><span class="p">,</span> <span class="n">job_requirement_qualification</span><span class="p">,</span> <span class="n">job_requirement_skill</span><span class="p">,</span> <span class="n">job_employment_type</span><span class="p">,</span> <span class="n">job_languages</span><span class="p">,</span> <span class="n">job_benefits</span><span class="p">,</span> <span class="n">job_apply_url</span><span class="p">,</span> <span class="n">job_location_zipcode</span><span class="p">,</span> <span class="n">job_location</span><span class="p">,</span> <span class="n">job_country</span><span class="p">]</span></code></pre></figure>
+
+<p><strong>6. save data</strong>
+After having no errors, and the program runs successfully, it is important to save the dataframe as a csv to your local root folder.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># concatenate dataframes and save scraped information as csv
+</span><span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">).</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"job_postings_results.csv"</span><span class="p">)</span></code></pre></figure>
+
+<p>And there you have it. A web crawler scraper program that can scrape job listings information for you!</p>
+
+
+    
+    
+
+    
+  </div>
+
+</article>
+
+</main>
+<!-- Footer section -->
+
+  <footer class="footer">
+    <ul>
+      <li><a href="/">Naelah Nordin</a></li>
+
+      
+
+      
+    </ul>
+  </footer>
+
+
+<!-- Theme scripts -->
+<script src="/assets/themes/curtana/js/app.js?assets-inline"></script>
+
+<!-- User scripts -->
+<script src="/assets/js/user.js?assets-inline"></script>
+
+<!-- Lightense Images -->
+
+
+<!-- Service Worker  -->
+
+
+<!-- Google Analytics -->
+
+
+<!-- Foot hooks -->
+
+
+<!-- Finale -->
+</html>
