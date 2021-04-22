@@ -1,172 +1,221 @@
-<!doctype html>
-
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="style.css">
+    <script src = 'd3.js'></script>
+    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js'></script>
 
-<!--
-  Apply head only for dev environment, this is required for jekyll to
-  insert livereload scripts
--->
-
-  <head>
-
-
-
-  <meta charset="utf-8">
-
-
-<title>Visualizing Malay Cinema - Naelah Nordin</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<!-- Define a description for better SEO result -->
-<meta name="description" content="新聞・ニュース・News">
-
-<!-- Cheome Web App theme color -->
-<meta name="theme-color" content="#BA90C2">
-
-<!-- Feed URL -->
-<link rel="alternate" href="/feed.xml" type="application/atom+xml">
-
-<!-- Site icons -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.png" type="image/png"><link rel="icon" href="/favicon.svg?assets-inline-assets-keep" sizes="any" type="image/svg+xml"><link rel="mask-icon" href="/mask-icon.svg" color="#BA90C2">
-
-<!-- Chrome Web App manifest -->
-<link rel="manifest" href="/manifest.json">
-
-<!-- Main CSS -->
-<link rel="stylesheet" href="/assets/themes/curtana/css/app.css?assets-inline">
-
-<!-- Canonical links, avoid duplicate content problems -->
-<link rel="canonical" href="http://0.0.0.0:4321/visualizing-malay-cinema/">
-
-<!-- DNS prefetching for static files -->
+    <meta property='og:title' content='Gender Representation in Malaysian Cinema'/>
+    <meta property='og:image' content='https://raw.githubusercontent.com/naelah/visualizing-malay-cinema/master/og-visualizaing-gender.png'/>
+    <meta property='og:description' content='An interactive scrollable visualization detailing the gender distribution in Malaysian Cinema in the 21st Century'/>
+    <meta property='og:url' content='https://github.com/naelah/visualizing-malay-cinema'/>
 
 
-<!-- Head hooks -->
+    <title>Gender in Malaysian Cinema</title>
+</head>
 
 
+<body>
+    <!-- <div id="info">
+        a
+    </div> -->
+    <div id="tooltip"></div>
+    <div id="graphic">
+        <div id="sections">
+            <section class="step">
+                <div class="title"></div>
+                <br><br>
+                <h1>Visualizing Gender Representation in Malaysian Cinema in the 21st Century</h1>
+                <p>By <a href = 'https://www.linkedin.com/in/naelahnordin/'>Naelah Nordin</a></p>
+                <p>
+                    I like watching movies and as I grew older, I find myself drawn to female-centric movies or movies with a 
+                majority female cast because I felt represented and they told stories that I related to. The more I learn about 
+                representation in media, the more I understand how important it is in cultivating the social culture and 
+                influencing how stereotypes are enforced. It also made me wonder of where does Malaysia stand in terms of 
+                gender representation and how has the Malaysian film scene progressed in the past 20 years? <br><br>
+                    
+                In this project, female-majority movies are represented by yellow bubbles and is defined by the female-to-male ratio of the first seven cast
+                credited being more than 50%, and vice-versa for male-majority movies, they are represented by red bubbles and defined by the male-to-female ratio
+                of the first seven cast credited being 50% and more. <br><br>
 
-  </head>
+                If you ever want to find out more about a movie, just hover over it and a tooltip should appear.<br><br>
 
-<!-- Open Graph and Twitter Cards support -->
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Naelah Nordin">
-<meta property="og:title" content="Visualizing Malay Cinema">
-<meta property="og:url" content="http://0.0.0.0:4321/visualizing-malay-cinema/">
-<meta property="og:description" content="新聞・ニュース・News">
-<meta property="og:image" content="http://0.0.0.0:4321/logo.png">
+                (Data was taken from FINAS & Wikipedia)</p>
+            </section>
+            <section class="step">
+                <h2>Are some genres more dominated by one gender or the other?</h2>
+                <p>
+                In this section, movies are clustered based on their genre. There are 16 genres altogether.
+                We can see that female-majority movies do not dominate any particular genre. However, they are 
+                more prominent in Romance, Comedy, Romantic Comedy, Drama and Thriller. Other genres are dominated
+                by male-majority movies but have a significantly lower number of movies in comparison.
+                Here, we have clustered the majors based on the broader category, of which there are 16 in total. The size 
+                of the bubbles represent the median salary of graduates from the major. 
 
-<meta name="twitter:card" content="summary_large_image">
+                When sorted like this, it's quite clear that engineering majors of all kinds have generally above-average median salaries. <br><br>
+                On the other end, it appears that majors in the field of psychology on average have the lowest graduate salaries. <br>
+                </p>
+                <div class="form-group">
+                    <label for="selectYear">Select Year: </label>
+                    <select class="form-control" id="selectYear2">
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                        <option>2008</option>
+                        <option>2009</option>
+                        <option>2010</option>
+                        <option>2011</option>
+                        <option>2012</option>
+                        <option>2013</option>
+                        <option>2014</option>
+                        <option>2015</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                    </select>
+                  </div>
+                <svg id = 'legend' width = '400px' height = '500px'></svg>
+            </section>
+            <section class = 'step'>
+                <h2>Which gender performs better in the box office?</h2>
+                <svg id = 'legend2' width = '400px' height = '450px'></svg><br><br>
+                <p>
+                Box office sales is a significant indicator of the success of a movie. The size of the bubble represents the scale of its number as noted above.
+                The amount has been adjusted to inflation based on Malaysia's annual Consumer Price Index (CPI). <br><br>
+                We can see that male-majorit movies giants over female-majority movies. Not only that, they also get more box office sales.
+            </p>
+            <div class="form-group">
+                <label for="selectYear3">Select Year: </label>
+                <select class="form-control" id="selectYear3">
+                    <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                        <option>2008</option>
+                        <option>2009</option>
+                        <option>2010</option>
+                        <option>2011</option>
+                        <option>2012</option>
+                        <option>2013</option>
+                        <option>2014</option>
+                        <option>2015</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                </select>
+              </div>
+            </section>
+            <section class="step">
+                <br><br><br><br><br><br>
+                <h2>How is the distribution of female-majority movies throughout the years?</h2>
+                <p>
+                    If we rearrange all the data points based on the year they were released, we can see a significant increase in movies produced starting 2010. However, the number of
+                    female-majority movies seem to be stagnant throughout despite the increase in movies produced. <br><br>
+                    The movies are also sorted by date of release from bottom-to-top, so we can see a pattern of high-grossing movies being released by the end of the year.
+                </p>
+        
+            </section>
+            <section class="step">
+                
+                <p>
+                <h2>Do female-majority movies perform better in box-office sales given a bigger budget?</h2>
+                This scatterplot of budget against box office sales explores the correlation between the two and can give an idea 
+                of how female-majority is accepted by the masses (box office sales) in relation to the support given (budget)<br><br>
+                A line of best fit is calculated and plotted to show the trend in both genders. An interesting pattern emerges 
+                where we see that while male-majority performs higher given a smaller budget, the trend shows that female-majority movies have a steeper trend thus performing better given more budget.
+                <br><br>
+                <small>Note: Some movies do not have record of their budget as FINAS did not release the budget of movies for certain years</small><br><br>
 
+                </p>
+                <div class="form-group">
+                    <label for="selectGender5">Select Gender: </label>
+                    <select class="form-control" id="selectGender5">
+                        <option>Female</option>
+                        <option>Male</option>
+                    </select>
+                </div>
+                 
+            </section>
+            <section class="step">
+                
+                Zooming into a smaller range of budget and box office sales, we can see that female-majority movies are closer to their trend line compared to male-majority movies
+                that is more scattered thus has a lower trend line<br><br> Female-majority movies also generally do not start on a high budget but those that do performs better
+                than male-majority movies. This implies that female-majority movies have a higher chance of performing well in the box office if given a higher budget.
 
-  <meta name="twitter:site" content="@naelnord">
+                <div class="form-group">
+                    <label for="selectGender6">Select Gender: </label>
+                    <select class="form-control" id="selectGender6">
+                        <option>Female</option>
+                        <option>Male</option>
+                    </select>
+                </div>
+            </section>
+            <section class="step">
+                <h1>The End</h1>
+                <p>
+                In conclusion, male-majority movies dominate the Malaysian film scene but do not necessarily perform better than female-majority movies in correlation with the budget
+                received. I hope to see more quality movies produced in Malaysia with a more diverse set of genres beyond rempit and horror as those are notably well-received. I hope the film industry
+                gives more opportunities for movies with female narratives and a female-majority cast for better gender representation. 
+                <h2>Recommended Future Work</h2>
+                Analyzing the gender distribution in the cast is just the tip of the iceberg. There are more accurate ways to determine gender representation in movies which includes 
+                analyzing the script and determining the amout of screentime the female characters receive, or analyze the number of lines that they say in comparison to their male counterparts. 
+                A step further than that is to analyze the subject of their lines and determine if the movie passes the bechdel test which is a common rubric in measuring female inclusivity in a movie.
+                <br><br>
+                Apart from gender representation, racial and ethnic representation in Malaysian movies is also an interesting subject to explore and analyze how far we have progressed in including 
+                racial representation considering we are a multi-racial country.
+                <br><br>
+                <h2>Credits</h2>
+                Github repository available <a href = 'https://github.com/naelah/visualizing-malay-cinema'>here</a><br>
+                Inspired by <a href = 'https://kontinentalist.com/stories/asian-representation-in-movies-have-things-changed-since-1997'>Kontinentalist's visualization post on Asian representation in American movies</a><br>
+                Scrollable template forked by <a href = 'https://github.com/cuthchow/college-majors-visualisation'>Cuthchow's project visualizing collge majors</a> hosted <a href = 'https://cuthchow.github.io/college-majors-visualisation/'>here</a><br>
+                Based on Cuthchow's <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>Medium post detailing his process</a><br>
+                
+                <br><br><br>
+                
+            </p>
+                <span></span><span></span><span></span>
+            </section>
+            <!-- <section class="step">
+                <h1>The End</h1>
+                <p>
+                    Hopefully, this has helped you in deciding what major you hope to study. If you want to take a deeper look into the data for yourself, you can download
+                    all the csv files <a href = 'https://www.kaggle.com/fivethirtyeight/fivethirtyeight-college-majors-dataset'>here</a>.
+                    <br><br>
+                    Special thanks to Jim Vallandingham for his article on <a href = 'https://vallandingham.me/scroller.html'>creating scrolling visualisations using D3.js</a>. All 
+                    of the code associated with this project can be found on its <a href = 'https://github.com/cuthchow/college-majors-visualisation'>Github page</a>.
+                    <br><br>
+                    I've also produced a full write-up of how I made this <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>over at my blog</a>.
+                </p>
+                <span></span><span></span><span></span>                
+            </section> -->
+           
 
+        </div>
+        <div id="vis">
 
+        </div>
+    </div>
 
-  <meta name="twitter:creator" content="@naelnord">
-
-
-
-<!-- Post specified styles -->
-<style data-assets-inline>
-  :root {
     
 
     
+    <script src = 'scroller.js'></script>
+    <script src = 'sections.js'></script>
 
-    
-
-    
-  }
-
-  body {
-    
-  }
-
-  
-  
-    
-</style>
-<!-- Main navigation with current page / categoriy highlighted -->
-<nav class="navigation">
-  <ul>
-    <li >
-        <a href="/">Naelah Nordin</a>
-      </li>
-    <li >
-        <a href="/about/">About</a>
-      </li>
-    <li >
-        <a href="/journal/">Journal</a>
-      </li>
-    <li >
-        <a href="/notes/">Notes</a>
-      </li>
-    <li >
-        <a href="/projects/">Projects</a>
-      </li>
-    
-  </ul>
-</nav>
-<!-- Main content wrap -->
-<main class="content " role=main>
-  <!-- Page-wide custom CSS -->
-
-
-<!-- Article wrapper, limit width -->
-<article lang="en">
-
-  <!-- Page title -->
-  <header style="     ">
-
-    <h1 class="" title="Visualizing Malay Cinema" data-title="Visualizing Malay Cinema">
-      Visualizing Malay Cinema<span class="dot dot--post"> </span>
-    </h1>
-
-    
-      <small>新聞・ニュース・News</small>
-    
-
-  </header>
-
-  <!-- Page content -->
-  <div class="page-content">
-    
-  </div>
-
-</article>
-
-</main>
-<!-- Footer section -->
-
-  <footer class="footer">
-    <ul>
-      <li><a href="/">Naelah Nordin</a></li>
-
-      
-
-      
-    </ul>
-  </footer>
-
-
-<!-- Theme scripts -->
-<script src="/assets/themes/curtana/js/app.js?assets-inline"></script>
-
-<!-- User scripts -->
-<script src="/assets/js/user.js?assets-inline"></script>
-
-<!-- Lightense Images -->
-
-
-<!-- Service Worker  -->
-
-
-<!-- Google Analytics -->
-
-
-<!-- Foot hooks -->
-
-
-<!-- Finale -->
+</body>
 </html>
