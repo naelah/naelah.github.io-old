@@ -3,10 +3,24 @@ html{
 }
   body {
     margin: 0;
+    max-width: 1200px;
     min-height: 1000px;
-    padding-left: var(--space-md)
+    padding-left: var(--space-sm);
+    /* --space-body: none; */
+    box-sizing: content-box;
   }
   
+  .content header{
+    background: none;
+  }
+
+  .page-content{
+    max-width: 1200px;
+  }
+
+  :root{
+    --space-lg: none;
+  }
   /* .checkbox {
       position: absolute;
     top: 15px;
@@ -82,7 +96,7 @@ html{
    /* GRAPHIC */
 
    /* GRAPHIC CODE */
-.graphic {
+/* .graphic {
 	width: 100%;
 	position: relative;
 }
@@ -117,8 +131,8 @@ html{
 	bottom: 0;
 }
 
-.graphic__vis svg {
-	border: 1px dashed black;
+/* .graphic__vis svg {
+	/* border: 1px dashed black; 
 	top: 50%;
 	position: relative;
 	-webkit-transform: translateY(-50%);
@@ -142,7 +156,7 @@ html{
 
 
 
-/* graph-scroll.js version */
+/* graph-scroll.js version 
 .graphic__vis.graph-scroll-fixed {
 	position: fixed;
 	right: auto;
@@ -151,4 +165,105 @@ html{
 .graphic__vis.graph-scroll-below {
 	top: auto;
 	bottom: 0;
+} */ 
+
+/* body{
+  max-width: 900px;
+  margin: 0px auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+} */
+
+h1{
+  margin: 50px;
+}
+
+h1{
+  text-align: center;
+}
+
+
+#container{
+  position: relative;
+}
+
+#sections{
+  width: 340px;
+}
+
+#sections > div{
+  background: white;
+  opacity: .2;
+  margin-bottom: 200px;
+}
+#sections > div:last-child{
+  margin-bottom: 30px;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+}
+
+#graph{
+  margin-left: 40px;
+  width: 800px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  float: right;
+}
+
+@media (max-width: 925px)  {
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections{
+    width: auto;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  #sections > div{
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 80vh;
+  }
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+
+circle{
+  fill: steelblue;
+}
+
+.mono{
+  font-family: monospace;
+}
+
+svg{
+  background-color: #eee;
+}
+
+
+
+.bubble {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubble:hover {
+  stroke: black;
+}
+
+.tooltip {
+  position: absolute;
 }

@@ -9174,7 +9174,7 @@ exports.formatPrefix = void 0;
 defaultLocale$1({
   thousands: ",",
   grouping: [3],
-  currency: ["$", ""]
+  currency: ["RM ", ""]
 });
 
 function defaultLocale$1(definition) {
