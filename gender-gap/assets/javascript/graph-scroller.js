@@ -497,6 +497,7 @@ var ref_line = svg.select(".refline").append("line");
       .sections(d3.selectAll('.container-2 #sections > div'))
       .offset(innerWidth < 900 ? innerHeight - 250 : 200)
       .on('active', function(i){
+        console.log("2: ", i)
 
         if(i==1){
           links_s
