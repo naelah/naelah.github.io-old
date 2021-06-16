@@ -20,7 +20,8 @@ function render([state, edu, industry]){
 
   ///////////// START LOLLIPOP CHART ///////////////////////
 
-  var max_salary_pay = d3.max(state, d=> d.median_salary_full)
+var max_salary_pay = d3.max(state, d=> d.median_salary_full)
+const national_median = 2207.25
 
 var t = d3.transition().duration(1000).ease(d3.easeElastic)
 var svg = d3.select('svg')
@@ -47,7 +48,7 @@ const lol_tooltip = d3.select('.container-1 #graph')
         .duration(200)
         lol_tooltip
         .style("opacity", 1)
-        .html("<small>"+d.state_name+ "'s Median: " + d3.format("$,.2f")(d.median_salary_full) +"<br> Gender Gap: " + d3.format("$,.2f")(d.salary_gender_gap)+"<br> Male Median Salary: " + d3.format("$,.2f")(d.median_salary_male)+"<br> Female Median Salary: " + d3.format("$,.2f")(d.median_salary_female)+"</small>")
+        .html("<small>"+d.state_name+ "'s Median Salary: " + d3.format("$,.2f")(d.median_salary_full) +"<br> Gender Gap: " + d3.format("$,.2f")(d.salary_gender_gap)+"<br> Male Median Salary: " + d3.format("$,.2f")(d.median_salary_male)+"<br> Female Median Salary: " + d3.format("$,.2f")(d.median_salary_female)+"</small>")
         .style("left", event.x-550 + "px")
         .style("top", event.y+50 + "px")
     }
@@ -58,7 +59,7 @@ const lol_tooltip = d3.select('.container-1 #graph')
           .duration(200)
           lol_tooltip
           .style("opacity", 1)
-          .html("<small>"+d.state_name+ "'s Median: " + d3.format("$,.2f")(d.median_salary_full) +"</small>")
+          .html("<small>"+d.state_name+ "'s Median Salary: " + d3.format("$,.2f")(d.median_salary_full) +"</small>")
           .style("left", event.x-550 + "px")
           .style("top", event.y+50 + "px")
       }
@@ -83,8 +84,9 @@ const hidelolTooltip = function(event, d) {
         console.log("gender_gap chart")
         
     
-        var gap_line = svg.selectAll("myline")
+        var gap_line = svg.selectAll(".myLine")
         .data(state).enter().append("line")
+        .attr('class', 'myLine')
         gap_line
         .attr("x1", function(d) { return x(d.median_salary_male); })
         .attr("x2", function(d) { return x(d.median_salary_female); })
@@ -114,9 +116,6 @@ const hidelolTooltip = function(event, d) {
 
         svg.selectAll("circle")
         .data(state)
-        .sort(function(a, b) {
-            return b.salary_gender_gap - a.salary_gender_gap;
-          })
         .transition().duration(1000).ease(d3.easeElastic)
         .attr("cy", function(d) { return y(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_male); })
@@ -127,7 +126,7 @@ const hidelolTooltip = function(event, d) {
         
         svg.selectAll("thecircle")
         .data(state).exit().remove()
-        svg.selectAll("myLine")
+        svg.selectAll(".myLine")
         .data(state).exit().remove()
     
     }
@@ -148,13 +147,14 @@ const hidelolTooltip = function(event, d) {
 
     
         salary.merge(salary_exit)
-        .transition().duration(1000).ease(d3.easeLinear)
+        .transition().duration(1000).ease(d3.easeElastic)
         .attr("cy", function(d) { return y(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_full); })
         .attr("r", "8")
+        .style("fill", "#33a02c")
     
         salary_exit.exit().remove()
-        svg.selectAll("line").data(state).exit().remove()
+        svg.selectAll(".myLine").data(state).remove()
         
     }
 
@@ -164,7 +164,7 @@ const hidelolTooltip = function(event, d) {
 
   ///////////// START 1ST CONTAINER ////////////////////////////
 
-  var svg = d3.select('.container-1 #graph')
+var svg = d3.select('.container-1 #graph')
     .append('svg')
     .attr('width', width + 'px')
     .attr('height', height + 'px')
@@ -192,15 +192,22 @@ svg.append("g")
   .style("text-anchor", "end");
    // .attr("transform", "translate(-10,0)rotate(-45)")
 
-var ref_line = svg.select(".refline").append("line");
-   ref_line
+svg.append("line")
    .attr("class","refline")
-   .attr("x1",  0)
-   .attr("x2", x(2000))
+   .attr("x1",  x(national_median))
+   .attr("x2", x(national_median))
    .attr("y1", 0)
-   .attr("y2",  height)
-  //  .attr("stroke", "grey")
-  //  .attr("stroke-width", "2")
+   .attr("y2",  (height-50))
+   .attr("stroke", "grey")
+   .attr("stroke-dasharray", "3")
+
+ svg.append("text")
+   .attr("y", 20)//magic number here
+   .attr("x", function(){ return x(national_median)+10})
+   .style("font-size", "12px")
+   .attr('text-anchor', 'right')
+   .attr("class", "chart_legend")//easy to style with CSS
+   .text("National Median Salary "+d3.format("$,.2f")(national_median));
 
   circles = svg.selectAll('circle')
     .data(state).enter().append('circle')
