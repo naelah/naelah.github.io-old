@@ -173,12 +173,17 @@ html{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 } */
 
-h1{
-  margin: 50px;
+.content header h1{
+
+  font-weight: normal;
+  
 }
 
+
 h1{
+  margin: 50px;
   text-align: center;
+  font-family: 'Tiempos Headline Web',Georgia,Times,serif
 }
 
 

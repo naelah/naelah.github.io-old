@@ -26,6 +26,56 @@ var t = d3.transition().duration(1000).ease(d3.easeElastic)
 var svg = d3.select('svg')
     .append('g').attr("transform", "translate(150,50)")
 var margin = {top: 10, right: 30, bottom: 90, left: 40}
+
+
+
+
+//// TOOLTIP /////
+
+const lol_tooltip = d3.select('.container-1 #graph')
+.append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "black")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+    .style("color", "white")
+
+  const showlolTooltip = function(event, d) {
+    lol_tooltip
+        .transition()
+        .duration(200)
+        lol_tooltip
+        .style("opacity", 1)
+        .html("<small>"+d.state_name+ "'s Median: " + d3.format("$,.2f")(d.median_salary_full) +"<br> Gender Gap: " + d3.format("$,.2f")(d.salary_gender_gap)+"<br> Male Median Salary: " + d3.format("$,.2f")(d.median_salary_male)+"<br> Female Median Salary: " + d3.format("$,.2f")(d.median_salary_female)+"</small>")
+        .style("left", event.x-550 + "px")
+        .style("top", event.y+50 + "px")
+    }
+
+    const showlolTooltip_gen = function(event, d) {
+      lol_tooltip
+          .transition()
+          .duration(200)
+          lol_tooltip
+          .style("opacity", 1)
+          .html("<small>"+d.state_name+ "'s Median: " + d3.format("$,.2f")(d.median_salary_full) +"</small>")
+          .style("left", event.x-550 + "px")
+          .style("top", event.y+50 + "px")
+      }
+const movelolTooltip = function(event, d) {
+  lol_tooltip
+        .style("opacity", 1)
+        .style("left", event.x-550 + "px")
+        .style("top", event.y+50 + "px")
+    }
+const hidelolTooltip = function(event, d) {
+  lol_tooltip
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+    }
+
+//// END TOOLTIP /////
    // width = 960 - margin.left - margin.right,
     //height = 600 - margin.top - margin.bottom;
 
@@ -35,9 +85,6 @@ var margin = {top: 10, right: 30, bottom: 90, left: 40}
     
         var gap_line = svg.selectAll("myline")
         .data(state).enter().append("line")
-        .sort(function(a, b) {
-            return b.salary_gender_gap - a.salary_gender_gap;
-          });
         gap_line
         .attr("x1", function(d) { return x(d.median_salary_male); })
         .attr("x2", function(d) { return x(d.median_salary_female); })
@@ -53,12 +100,12 @@ var margin = {top: 10, right: 30, bottom: 90, left: 40}
         // Circle salary female
         var femcircle = svg.selectAll("thecircle")
         .data(state).enter().append('circle')
-        .sort(function(a, b) {
-            return b.salary_gender_gap - a.salary_gender_gap;
-          });
         femcircle.attr("cy", function(d) { return y(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_female); })
         .attr("r", 0)
+        .on("mouseover", showlolTooltip )
+        .on("mousemove", movelolTooltip )
+        .on("mouseleave", hidelolTooltip )
     
         femcircle
         .transition().duration(1000).ease(d3.easeElastic)
@@ -145,16 +192,29 @@ svg.append("g")
   .style("text-anchor", "end");
    // .attr("transform", "translate(-10,0)rotate(-45)")
 
-   svg.selectAll('circle')
+var ref_line = svg.select(".refline").append("line");
+   ref_line
+   .attr("class","refline")
+   .attr("x1",  0)
+   .attr("x2", x(2000))
+   .attr("y1", 0)
+   .attr("y2",  height)
+  //  .attr("stroke", "grey")
+  //  .attr("stroke-width", "2")
+
+  circles = svg.selectAll('circle')
     .data(state).enter().append('circle')
-    .sort(function(a, b) {
-        return b.median_salary_full - a.median_salary_full;
-      })
+
+  circles
     .transition().duration(1000).ease(d3.easeElastic)
     .attr("cy", function(d) { return y(d.state_name); })
     .attr("cx", function(d) { return x(d.median_salary_full); })
-    .attr("r", "4")
-    .style("fill", "#33a02c");
+    .attr("r", "8")
+    .style("fill", "#33a02c")
+  circles
+    .on("mouseover", showlolTooltip_gen )
+    .on("mousemove", movelolTooltip )
+    .on("mouseleave", hidelolTooltip )
 
   var gs = d3.graphScroll()
       .container(d3.select('.container-1'))
@@ -200,7 +260,10 @@ svg.append("g")
 
     
 
-    //color = d3.scaleOrdinal(["1"], ["#da4f81"]).unknown("#ccc")
+    highschool_color = d3.scaleOrdinal(["No Formal Education"], ["#da4f81"]).unknown("#ccc")
+    primary_color = d3.scaleOrdinal(["Primary"], ["#da4f81"]).unknown("#ccc")
+    secondary_color = d3.scaleOrdinal(["Secondary"], ["#da4f81"]).unknown("#ccc")
+    tertiary_color = d3.scaleOrdinal(["Tertiary"], ["#da4f81"]).unknown("#ccc")
     var keys = ['education','field_of_study','salary_range']
     color = d3.scaleOrdinal().domain([1,2,3])
     .range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4"]);
@@ -213,7 +276,7 @@ svg.append("g")
     .nodePadding(20)
     .extent([[0, 5], [width, height - 5]])
 
-    function create_graph(){
+    function create_graph(data){
         let index = -1;
         const nodes = [];
         const nodeByKey = new Map;
@@ -221,7 +284,7 @@ svg.append("g")
         const links = [];
       
         for (const k of keys) {
-          for (const d of edu) {
+          for (const d of data) {
             const key = JSON.stringify([k, d[k]]);
             if (nodeByKey.has(key)) continue;
             const node = {name: d[k]};
@@ -236,7 +299,7 @@ svg.append("g")
           const b = keys[i];
           const prefix = keys.slice(0, i + 1);
           const linkByKey = new Map;
-          for (const d of edu) {
+          for (const d of data) {
             const names = prefix.map(k => d[k]);
             const key = JSON.stringify(names);
             const value = d.value || 1;
@@ -255,8 +318,10 @@ svg.append("g")
       
         return {nodes, links}
     }
-    graph =  create_graph();
-    console.log(graph)
+    graph =  create_graph(edu);
+    graph_fem =  create_graph(edu);
+    graph_male =  create_graph(edu);
+    //console.log(graph)
 
       
     const showParTooltip = function(event, d) {
@@ -269,6 +334,7 @@ svg.append("g")
             .style("left", event.x-300 + "px")
             .style("top", event.y + "px")
         }
+        
     const moveParTooltip = function(event, d) {
         par_tooltip
             .style("opacity", 1)
@@ -282,18 +348,35 @@ svg.append("g")
             .style("opacity", 0)
         }
 
-         
+  function generate_node(graph){
+    const {nodes, links} = sankey({
+      nodes: graph.nodes.map(d => Object.assign({}, d)),
+      links: graph.links.map(d => Object.assign({}, d))
+    });
+    return {nodes: nodes, links: links}
+  }
 
 
+  const full_par = generate_node(graph)
+  const fem_par = generate_node(graph)
+  const male_par = generate_node(graph)
 
-  const {nodes, links} = sankey({
-    nodes: graph.nodes.map(d => Object.assign({}, d)),
-    links: graph.links.map(d => Object.assign({}, d))
-  });
+  // const {nodes_fem, links_fem} = sankey({
+  //   nodes: graph_fem.nodes.map(d => Object.assign({}, d)),
+  //   links: graph_fem.links.map(d => Object.assign({}, d))
+  // });
 
-  svg2.append("g")
-    .selectAll("rect")
-    .data(nodes)
+  // const {nodes_male, links_male} = sankey({
+  //   nodes: graph_male.nodes.map(d => Object.assign({}, d)),
+  //   links: graph_male.links.map(d => Object.assign({}, d))
+  // });
+
+  function full_parset(){
+
+    svg2.append("g")
+    .selectAll(".node")
+    .data(full_par.nodes)
+    .attr("class","node")
     .join("rect")
       .attr("x", d => d.x0)
       .attr("y", d => d.y0)
@@ -305,7 +388,59 @@ svg.append("g")
     links_s = svg2.append("g")
       .attr("fill", "none")
     .selectAll("g")
-    .data(links).join("path");
+    .data(full_par.links).join("path");
+    links_s
+    .transition().duration(1000)
+      .attr("d", d3.sankeyLinkHorizontal())
+      .attr("stroke", d => color(d.names[0]))
+      .attr("stroke-width", d => d.width)
+      .style("mix-blend-mode", "multiply");
+    links_s
+    .on("mouseover", showParTooltip )
+    .on("mousemove", moveParTooltip )
+    .on("mouseleave", hideParTooltip )
+    // links_s
+    // .append("title")
+    //   .text(d => `${d.names.join(" → ")}\n${d.value.toLocaleString()}`);
+
+  svg2.append("g")
+      .style("font", "10px sans-serif")
+    .selectAll(".parset_link")
+    .data(full_par.nodes)
+    .attr('class','parset_link')
+    .join("text")
+      .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
+      .attr("y", d => (d.y1 + d.y0) / 2)
+      .attr("dy", "0.35em")
+      .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
+      .text(d => d.name)
+    .append("tspan")
+      .attr("fill-opacity", 0.7)
+      .text(d => ` ${d.value.toLocaleString()}`);
+
+
+
+  }
+
+  function female_parset(){
+
+    svg2
+    .selectAll(".node")
+    .data(fem_par.nodes)
+    .attr('class','node')
+    .join("rect")
+      .attr("x", d => d.x0)
+      .attr("y", d => d.y0)
+      .attr("height", d => d.y1 - d.y0)
+      .attr("width", d => d.x1 - d.x0)
+    .append("title")
+      .text(d => d.name + "<br>" + d.value.toLocaleString());
+
+    links_s = svg2
+      .attr("fill", "none")
+    .selectAll(".parset_link")
+    .data(fem_par.links).join("path")
+    .attr('class','parset_link');
     links_s
     .transition().duration(1000)
       .attr("d", d3.sankeyLinkHorizontal())
@@ -323,7 +458,7 @@ svg.append("g")
   svg2.append("g")
       .style("font", "10px sans-serif")
     .selectAll("text")
-    .data(nodes)
+    .data(fem_par.nodes)
     .join("text")
       .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
       .attr("y", d => (d.y1 + d.y0) / 2)
@@ -334,6 +469,18 @@ svg.append("g")
       .attr("fill-opacity", 0.7)
       .text(d => ` ${d.value.toLocaleString()}`);
 
+
+
+
+  }
+
+  function male_parset(){
+
+
+  }
+
+  
+
   //return svg.node();
 
     ///////////// END PARALLEL SET FUNCTIONS ////////////////////////////
@@ -341,7 +488,7 @@ svg.append("g")
 
   ///////////// START 2ND CONTAINER ////////////////////////////
 
-
+  full_parset()
 
   var gs2 = d3.graphScroll()
       .container(d3.select('.container-2'))
@@ -351,6 +498,27 @@ svg.append("g")
       .offset(innerWidth < 900 ? innerHeight - 70 : 200)
       .on('active', function(i){
 
+        if(i==0){
+          links_s
+          .attr("stroke", d => color(d.names[0]))
+        }
+
+        else if(i == 1){
+          links_s
+          .attr("stroke", d => highschool_color(d.names[0]))
+          //female_parset()
+
+        }
+        else if (i == 2){
+          links_s.attr("stroke", d => primary_color(d.names[0]))
+
+        }
+        else if (i == 3){
+          links_s.attr("stroke", d => secondary_color(d.names[0]))
+        }
+
+        else if (i == 4)
+        links_s.attr("stroke", d => tertiary_color(d.names[0]))
       })
 
 
@@ -439,7 +607,7 @@ svg.append("g")
             .duration(200)
         tooltip
             .style("opacity", 1)
-            .html("Median: " + d3.format("($.2f")(d.median) +"<br> Industry: " + d.industry+"<br> Median_Group: " + d.median_group)
+            .html("<small>Median: " + d3.format("($.2f")(d.median) +"<br> Industry: " + d.industry+"<br> Count: " + d.count+"</small")
             .style("left", (event.x)/2 + "px")
             .style("top", (event.y)/2+30 + "px")
         }
