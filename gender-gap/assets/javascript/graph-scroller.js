@@ -498,26 +498,26 @@ var ref_line = svg.select(".refline").append("line");
       .offset(innerWidth < 900 ? innerHeight - 70 : 200)
       .on('active', function(i){
 
-        if(i==0){
+        if(i==1){
           links_s
           .attr("stroke", d => color(d.names[0]))
         }
 
-        else if(i == 1){
+        else if(i == 2){
           links_s
           .attr("stroke", d => highschool_color(d.names[0]))
           //female_parset()
 
         }
-        else if (i == 2){
+        else if (i == 3){
           links_s.attr("stroke", d => primary_color(d.names[0]))
 
         }
-        else if (i == 3){
+        else if (i == 4){
           links_s.attr("stroke", d => secondary_color(d.names[0]))
         }
 
-        else if (i == 4)
+        else if (i == 5)
         links_s.attr("stroke", d => tertiary_color(d.names[0]))
       })
 
