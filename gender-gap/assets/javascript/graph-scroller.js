@@ -495,7 +495,7 @@ var ref_line = svg.select(".refline").append("line");
       .graph(d3.selectAll('.container-2 #graph'))
       .eventId('uniqueId2')  // namespace for scroll and resize events
       .sections(d3.selectAll('.container-2 #sections > div'))
-      .offset(innerWidth < 900 ? innerHeight - 70 : 200)
+      .offset(innerWidth < 900 ? innerHeight - 250 : 200)
       .on('active', function(i){
 
         if(i==1){
