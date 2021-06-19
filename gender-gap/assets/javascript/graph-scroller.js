@@ -18,14 +18,154 @@ function render([state, edu, industry]){
 
   // return console.log(width, height)
 
+  ///////////////   COLORS /////////////////////////////
+
+  
+
+  // Parset Colors
+
+  highschool_color = d3.scaleOrdinal(["No Formal Education"], ["#da4f81"]).unknown("#ccc")
+  primary_color = d3.scaleOrdinal(["Primary"], ["#da4f81"]).unknown("#ccc")
+  secondary_color = d3.scaleOrdinal(["Secondary"], ["#da4f81"]).unknown("#ccc")
+  tertiary_color = d3.scaleOrdinal(["Tertiary"], ["#da4f81"]).unknown("#ccc")
+  var keys = ['education','field_of_study','salary_range']
+  color = d3.scaleOrdinal().domain([1,2,3])
+  .range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4"]);
+
+  // Bubblechart
+
+  fillColour = d3.scaleOrdinal()
+  .domain(["1", "2", "3", "4"])
+  .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99"])
+
+
+  /////////////// START LEGENDS ////////////////////////
+
+  ///// LOLLIPOP LEGENDS ///////
+
+  ///// END LOLLIPOP LEGENDS ///////
+
+  ///// BUBBLECHART LEGENDS ///////
+
+  // legend
+  var valuesToShow = [100, 1000, 3000]
+
+  leg_height = 200
+  leg_width = 300
+  xCircle = leg_width/3
+  xLabel = (leg_width/3) + 100
+  leg_padding = 30
+
+  var z = d3.scaleSqrt()
+    .domain([0, 5000])
+    .range([ 2, 100]);
+    
+  var legend = d3.select('#bubble_legend').append('svg')
+    .attr('class','svg_legend')
+    .attr('width',leg_width+'px')
+    .attr('height', leg_height + 'px');
+
+  legend
+    .selectAll("legend")
+    .data(valuesToShow)
+    .enter()
+    .append("circle")
+    .attr("cx", xCircle)
+    .attr("cy", function(d){ return leg_height - leg_padding - z(d) } )
+    .attr("r", function(d){ return z(d) })
+    .style("fill", "none")
+    .attr("stroke", "black")
+
+// Add legend: segments
+  legend
+    .selectAll("legend")
+    .data(valuesToShow)
+    .enter()
+    .append("line")
+    .attr('x1', function(d){ return xCircle + z(d) } )
+    .attr('x2', xLabel)
+    .attr('y1', function(d){ return leg_height - leg_padding - z(d) } )
+    .attr('y2', function(d){ return leg_height - leg_padding - z(d) } )
+    .attr('stroke', 'black')
+    .style('stroke-dasharray', ('2,2'))
+
+    // Add legend: labels
+    legend
+      .selectAll("legend")
+      .data(valuesToShow)
+      .enter()
+      .append("text")
+        .attr('x', xLabel)
+        .attr('y', function(d){ return leg_height - leg_padding - z(d) } )
+        .text( function(d){ return d} )
+        .style("font-size", 10)
+        .attr('alignment-baseline', 'middle')
+
+    // Legend title
+    legend.append("text")
+      .attr('x', xCircle + 15)
+      .attr("y", leg_height - 5 )
+      .text("Total Number of Industry Workers")
+      .attr("text-anchor", "middle")
+      .style("font-size", "16px")
+  
+
+    //label
+
+    var bubble_label = d3.select('#bubble_label').append('svg')
+    .attr('class','svg_legend')
+    .attr('width',leg_width+'px')
+    .attr('height', leg_height + 'px');
+
+    var size = 20
+    var allgroups = ["0 - 2500", "2500 - 3500", "3500 - 5000", "More than 5000"]
+    bubble_label
+    .selectAll('bubble_label')
+      .data(allgroups)
+      .enter()
+      .append("circle")
+        .attr("cx", 10)
+        .attr("cy", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("r", 7)
+        .style("fill", function(d){ return fillColour(d)})
+        // .on("mouseover", highlight)
+        // .on("mouseleave", noHighlight)
+
+    // Add labels beside legend dots
+    bubble_label
+    .selectAll('bubble_label')
+      .data(allgroups)
+      .enter()
+      .append("text")
+        .attr("x", 10 + size*.8)
+        .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", function(d){ return fillColour(d)})
+        .text(function(d){ return d})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .style("font-size", "16px")
+        // .on("mouseover", highlight)
+        // .on("mouseleave", noHighlight)
+
+
+  ///// END BUBBLECHART LEGENDS ///////
+
+  //BUBBLE LEGEND
+
+
+  //BUBBLE LABEL
+
+
+  /////////////// END LEGENDS ////////////////////////
+
   ///////////// START LOLLIPOP CHART ///////////////////////
 
 var max_salary_pay = d3.max(state, d=> d.median_salary_full)
 const national_median = 2207.25
 
 var t = d3.transition().duration(1000).ease(d3.easeElastic)
-var svg = d3.select('svg')
-    .append('g').attr("transform", "translate(150,50)")
+//var svg = d3.select('.svg_main')
+//    .append('g').attr("transform", "translate(150,50)")
 var margin = {top: 10, right: 30, bottom: 90, left: 40}
 
 
@@ -73,6 +213,7 @@ const hidelolTooltip = function(event, d) {
   lol_tooltip
         .transition()
         .duration(200)
+       // .html("<small>"+d.state_name+ "'s Median Salary: " + d3.format("$,.2f")(d.median_salary_full) +"</small>")
         .style("opacity", 0)
     }
 
@@ -265,16 +406,7 @@ svg.append("line")
     .attr('width', width + 'px')
     .attr('height', height + 'px')
 
-    
-
-    highschool_color = d3.scaleOrdinal(["No Formal Education"], ["#da4f81"]).unknown("#ccc")
-    primary_color = d3.scaleOrdinal(["Primary"], ["#da4f81"]).unknown("#ccc")
-    secondary_color = d3.scaleOrdinal(["Secondary"], ["#da4f81"]).unknown("#ccc")
-    tertiary_color = d3.scaleOrdinal(["Tertiary"], ["#da4f81"]).unknown("#ccc")
-    var keys = ['education','field_of_study','salary_range']
-    color = d3.scaleOrdinal().domain([1,2,3])
-    .range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4"]);
-    //"#fbb4ae","#b3cde3","#ccebc5","#decbe4"
+  
 
     sankey = d3.sankey()
     .nodeSort(undefined)
@@ -564,14 +696,7 @@ svg.append("line")
         // force simulation starts up automatically, which we don't want as there aren't any nodes yet
         simulation.stop();
       
-        // set up colour scale
-        const fillColour = d3.scaleOrdinal()
-            .domain(["1", "2", "3", "5", "99"])
-            //.range(d3.schemePaired)
-            .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99"])
-            //["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"]
-            //.range(["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#AAAAAA"]);
-      
+
         // data manipulation function takes raw data from csv and converts it into an array of node objects
         // each node will store data and visualisation values to draw a bubble
         // industry is expected to be an array of data objects, read in d3.csv
@@ -616,18 +741,19 @@ svg.append("line")
         tooltip
             .style("opacity", 1)
             .html("<small>Median: " + d3.format("($.2f")(d.median) +"<br> Industry: " + d.industry+"<br> Count: " + d.count+"</small")
-            .style("left", (event.x)/2 + "px")
-            .style("top", (event.y)/2+30 + "px")
+            .style("left", (event.x)-450 + "px")
+            .style("top", (event.y)-130 + "px")
         }
         const moveTooltip = function(event, d) {
         tooltip
-            .style("left", (event.x)/2 + "px")
-            .style("top", (event.y)/2+30 + "px")
+            .style("left", (event.x)-350 + "px")
+            .style("top", (event.y)-130 + "px")
         }
         const hideTooltip = function(event, d) {
         tooltip
             .transition()
             .duration(200)
+            //.html("")
             .style("opacity", 0)
         }
          // bind nodes data to circle elements

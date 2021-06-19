@@ -258,7 +258,11 @@ circle{
 svg{
   background-color: #eee;
 }
+.svg_legend{
+  background-color: white; 
+  /* stroke : none */
 
+}
 
 
 .bubble {
