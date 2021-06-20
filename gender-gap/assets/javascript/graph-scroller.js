@@ -28,7 +28,7 @@ function render([state, edu, industry]){
   primary_color = d3.scaleOrdinal(["Primary"], ["#da4f81"]).unknown("#ccc")
   secondary_color = d3.scaleOrdinal(["Secondary"], ["#da4f81"]).unknown("#ccc")
   tertiary_color = d3.scaleOrdinal(["Tertiary"], ["#da4f81"]).unknown("#ccc")
-  var keys = ['education','field_of_study','salary_range']
+  var keys = ['gender','education','salary_range']
   color = d3.scaleOrdinal().domain([1,2,3])
   .range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4"]);
 
@@ -115,30 +115,41 @@ function render([state, edu, industry]){
     var bubble_label = d3.select('#bubble_label').append('svg')
     .attr('class','svg_legend')
     .attr('width',leg_width+'px')
-    .attr('height', leg_height + 'px');
+    .attr('height', leg_height  + 'px');
 
     var size = 20
-    var allgroups = ["0 - 2500", "2500 - 3500", "3500 - 5000", "More than 5000"]
+    var allgroups = ["0 - 2500", "2500 - 5000", "More than 5000"]
+
+    bubble_label
+    .append("text")
+      .attr('x', 0 )
+      .attr("y", 60 + 0 * (size + 5) + (size/2) )
+      .text("Median Salary")
+      .attr("text-anchor", "left")
+      .style("font-size", "16px")
+
     bubble_label
     .selectAll('bubble_label')
       .data(allgroups)
       .enter()
       .append("circle")
         .attr("cx", 10)
-        .attr("cy", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("cy", function(d,i){ return 40 + (i + 2)*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 7)
         .style("fill", function(d){ return fillColour(d)})
         // .on("mouseover", highlight)
         // .on("mouseleave", noHighlight)
 
+    
     // Add labels beside legend dots
+
     bubble_label
     .selectAll('bubble_label')
       .data(allgroups)
       .enter()
       .append("text")
         .attr("x", 10 + size*.8)
-        .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", function(d,i){ return 32 + (i + 2) * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ return fillColour(d)})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
@@ -146,6 +157,8 @@ function render([state, edu, industry]){
         .style("font-size", "16px")
         // .on("mouseover", highlight)
         // .on("mouseleave", noHighlight)
+    
+  
 
 
   ///// END BUBBLECHART LEGENDS ///////
@@ -164,6 +177,7 @@ var max_salary_pay = d3.max(state, d=> d.median_salary_full)
 const national_median = 2207.25
 
 var t = d3.transition().duration(1000).ease(d3.easeElastic)
+
 //var svg = d3.select('.svg_main')
 //    .append('g').attr("transform", "translate(150,50)")
 var margin = {top: 10, right: 30, bottom: 90, left: 40}
@@ -221,29 +235,52 @@ const hidelolTooltip = function(event, d) {
    // width = 960 - margin.left - margin.right,
     //height = 600 - margin.top - margin.bottom;
 
+   
+
     function update_gender_gap() {
+      var state_fem = state.sort(function(a, b) {
+        return d3.descending(a.salary_gender_gap, b.salary_gender_gap)});
+
+        var y_fem = d3.scaleBand()
+.range([ (height-50),0 ])
+.domain(state_fem.map(function(d) { return d.state_name; }))
+.padding(1);
+
         console.log("gender_gap chart")
-        
-    
+        var transition_y = svg.transition().duration(750),
+        delay = function(d, i) {
+          return i * 50;
+        };
+      transition_y.select(".y-axis")
+        .call(d3.axisLeft(y_fem))
+        .selectAll("text")
+        .delay(delay);
+
         var gap_line = svg.selectAll(".myLine")
-        .data(state).enter().append("line")
+        .data(state_fem)
+        .enter().append("line")
         .attr('class', 'myLine')
         gap_line
         .attr("x1", function(d) { return x(d.median_salary_male); })
         .attr("x2", function(d) { return x(d.median_salary_female); })
-        .attr("y1", function(d) { return y(d.state_name); })
-        .attr("y2", function(d) { return y(d.state_name); })
+        .attr("y1", function(d) { return y_fem(d.state_name); })
+        .attr("y2", function(d) { return y_fem(d.state_name); })
         .attr("stroke", "grey")
         .attr("stroke-width", "0px")
         gap_line
         .transition().duration(1000)
         .attr("stroke-width", "2px")
     
+      //console.log(state_fem)
     
         // Circle salary female
         var femcircle = svg.selectAll("thecircle")
-        .data(state).enter().append('circle')
-        femcircle.attr("cy", function(d) { return y(d.state_name); })
+        .data(state_fem)
+        .enter().append('circle')
+        // .sort(function(a, b) {
+        //   return d3.descending(a.salary_gender_gap, b.salary_gender_gap)})
+
+        femcircle.attr("cy", function(d) { return y_fem(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_female); })
         .attr("r", 0)
         .on("mouseover", showlolTooltip )
@@ -251,14 +288,14 @@ const hidelolTooltip = function(event, d) {
         .on("mouseleave", hidelolTooltip )
     
         femcircle
-        .transition().duration(1000).ease(d3.easeElastic)
+        .transition().duration(1000).ease(d3.easeLinear)
         .attr("r","8")
         .style("fill", "#cab2d6");
 
         svg.selectAll("circle")
-        .data(state)
-        .transition().duration(1000).ease(d3.easeElastic)
-        .attr("cy", function(d) { return y(d.state_name); })
+        .data(state_fem)
+        .transition().duration(1000).ease(d3.easeLinear)
+        .attr("cy", function(d) { return y_fem(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_male); })
         .attr("r", "8")
         .style("fill", "#1f78b4");
@@ -266,9 +303,9 @@ const hidelolTooltip = function(event, d) {
 
         
         svg.selectAll("thecircle")
-        .data(state).exit().remove()
+        .data(state_fem).exit().remove()
         svg.selectAll(".myLine")
-        .data(state).exit().remove()
+        .data(state_fem).exit().remove()
     
     }
     
@@ -278,24 +315,30 @@ const hidelolTooltip = function(event, d) {
     
     function median_salary(){
     
+      
         console.log("median chart")
     
-        var salary_exit = svg.selectAll('circle').data(state)
-        
-    
+        var salary_exit = svg.selectAll('circle').data(state_order)
         var salary = salary_exit.enter().append('circle').style("fill", "#33a02c")
+        var transition_y = svg.transition().duration(750),
+          delay = function(d, i) {
+            return i * 50;
+          };
         
+        transition_y.select(".y-axis")
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        .delay(delay);
 
-    
         salary.merge(salary_exit)
-        .transition().duration(1000).ease(d3.easeElastic)
+        .transition().duration(750).ease(d3.easeLinear)
         .attr("cy", function(d) { return y(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_full); })
         .attr("r", "8")
         .style("fill", "#33a02c")
     
         salary_exit.exit().remove()
-        svg.selectAll(".myLine").data(state).remove()
+        svg.selectAll(".myLine").data(state_order).remove()
         
     }
 
@@ -305,16 +348,26 @@ const hidelolTooltip = function(event, d) {
 
   ///////////// START 1ST CONTAINER ////////////////////////////
 
+var state_order = state.sort(function(a, b) {
+  return d3.ascending(a.median_salary_full, b.median_salary_full)});
+
 var svg = d3.select('.container-1 #graph')
     .append('svg')
     .attr('width', width + 'px')
     .attr('height', height + 'px')
     .append('g').attr("transform", "translate(150,0)")
   // Add Y axis
+
+var transition_y = svg.transition().duration(750),
+delay = function(d, i) {
+  return i * 50;
+};
+
 var y = d3.scaleBand()
 .range([ (height-50),0 ])
-.domain(state.map(function(d) { return d.state_name; }))
+.domain(state_order.map(function(d) { return d.state_name; }))
 .padding(1);
+
 
 // Add X axis
 var x = d3.scaleLinear()
@@ -323,11 +376,13 @@ var x = d3.scaleLinear()
 
 svg.append("g")
 .attr("transform", "translate(0," + (height-50)+")")
+.attr("class", "x-axis")
 .call(d3.axisBottom(x));
 
 
 svg.append("g")
   .call(d3.axisLeft(y))
+  .attr("class", "y-axis")
   //.attr("transform", "translate(150, 50)")
   .selectAll("text")
   .style("text-anchor", "end");
@@ -350,8 +405,10 @@ svg.append("line")
    .attr("class", "chart_legend")//easy to style with CSS
    .text("National Median Salary "+d3.format("$,.2f")(national_median));
 
+
+
   circles = svg.selectAll('circle')
-    .data(state).enter().append('circle')
+    .data(state_order).enter().append('circle')
 
   circles
     .transition().duration(1000).ease(d3.easeElastic)
@@ -409,7 +466,7 @@ svg.append("line")
   
 
     sankey = d3.sankey()
-    .nodeSort(undefined)
+    .nodeSort(null)
     .linkSort(null)
     .nodeWidth(4)
     .nodePadding(20)
@@ -470,15 +527,15 @@ svg.append("line")
         par_tooltip
             .style("opacity", 1)
             .html(`${d.names.join(" → ")}\n${d.value.toLocaleString()}`)
-            .style("left", event.x-300 + "px")
-            .style("top", event.y + "px")
+            .style("left", event.x-550 + "px")
+            .style("top", event.y + 10 + "px")
         }
         
     const moveParTooltip = function(event, d) {
         par_tooltip
             .style("opacity", 1)
-            .style("left", event.x-300 + "px")
-            .style("top", event.y + "px")
+            .style("left", event.x-550 + "px")
+            .style("top", event.y + 10  + "px")
         }
     const hideParTooltip = function(event, d) {
         par_tooltip
@@ -640,25 +697,25 @@ svg.append("line")
 
         if(i==1){
           links_s
-          .attr("stroke", d => color(d.names[0]))
+          .attr("stroke", d => color(d.names[1]))
         }
 
         else if(i == 2){
           links_s
-          .attr("stroke", d => highschool_color(d.names[0]))
+          .attr("stroke", d => highschool_color(d.names[1]))
           //female_parset()
 
         }
         else if (i == 3){
-          links_s.attr("stroke", d => primary_color(d.names[0]))
+          links_s.attr("stroke", d => primary_color(d.names[1]))
 
         }
         else if (i == 4){
-          links_s.attr("stroke", d => secondary_color(d.names[0]))
+          links_s.attr("stroke", d => secondary_color(d.names[1]))
         }
 
         else if (i == 5)
-        links_s.attr("stroke", d => tertiary_color(d.names[0]))
+        links_s.attr("stroke", d => tertiary_color(d.names[1]))
       })
 
 
@@ -670,6 +727,16 @@ svg.append("line")
 
 
         const centre = { x: width/2, y: height/2 };
+        var top = height/4
+        var left = width/4
+        var right = left*3
+        var bottom = top*3
+        const median_group_coords = 
+
+        { '0 - 2500':[centre.x, top],
+        '2500 - 5000':[left, bottom],
+        '5000 and more':[right, bottom]
+        }
       
         // strength to apply to the position forces
         const forceStrength = 0.03;
@@ -741,13 +808,13 @@ svg.append("line")
         tooltip
             .style("opacity", 1)
             .html("<small>Median: " + d3.format("($.2f")(d.median) +"<br> Industry: " + d.industry+"<br> Count: " + d.count+"</small")
-            .style("left", (event.x)-450 + "px")
-            .style("top", (event.y)-130 + "px")
+            .style("left", (event.x) -550 + "px")
+            .style("top", (event.y) + 20 + "px")
         }
         const moveTooltip = function(event, d) {
         tooltip
-            .style("left", (event.x)-350 + "px")
-            .style("top", (event.y)-130 + "px")
+            .style("left", (event.x) -550 + "px")
+            .style("top", (event.y) + 20 + "px")
         }
         const hideTooltip = function(event, d) {
         tooltip
@@ -813,6 +880,29 @@ svg.append("line")
             .attr('cy', d => d.y)
       
         }
+    function medianClusters(){
+      
+
+      console.log("medianClusters")
+      simulation  
+        .force('charge', d3.forceManyBody().strength([2]))
+        .force('forceX', d3.forceX(d => median_group_coords[d.median_group][0]))
+        .force('forceY', d3.forceY(d => median_group_coords[d.median_group][1]))
+       // .force('collide', d3.forceCollide(d => salarySizeScale(d.Median) + 4))
+        .alpha(0.7).alphaDecay(0.02).restart()
+    }
+
+    function recentre(){
+      simulation  
+        .force('charge', d3.forceManyBody().strength([2]))
+        .force('forceX', d3.forceX(d => centre.x))
+        .force('forceY', d3.forceY(d => centre.y))
+       // .force('collide', d3.forceCollide(d => salarySizeScale(d.Median) + 4))
+        .alpha(0.7).alphaDecay(0.02).restart()
+
+    }
+
+    
     /////////// END OF BUBBLE CHART FUNCTIONS /////////////
     
     
@@ -825,6 +915,9 @@ svg.append("line")
       .sections(d3.selectAll('.container-3 #sections > div'))
       .offset(innerWidth < 900 ? innerHeight - 70 : 200)
       .on('active', function(i){
+
+        if(i == 1){ recentre()}
+        if (i == 2){ medianClusters()}
 
         console.log("3: ", i)
         simulation

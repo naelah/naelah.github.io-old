@@ -275,4 +275,6 @@ svg{
 
 .tooltip {
   position: absolute;
+  padding: 5px;
+  font: 12px sans-serif;	
 }
