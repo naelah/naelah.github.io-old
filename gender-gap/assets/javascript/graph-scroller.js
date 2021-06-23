@@ -1,5 +1,8 @@
+// const { easeLinear } = require("d3")
+// const { easeBack } = require("./d3")
+
 var oldWidth = 0
-function render([state, edu, industry]){
+function render([state, edu, industry, occupation]){
 
     // console.log(state)
     // console.log(edu)
@@ -18,6 +21,34 @@ function render([state, edu, industry]){
 
   // return console.log(width, height)
 
+  ////////////// function to wrap text ////////////////////
+
+  function wrap(text, width) {
+    text.each(function() {
+        var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        lineHeight = 1.1, // ems
+        tspan = text.text(null).append("tspan").attr("x", function(d) { return d.children || d._children ? -10 : 10; }).attr("y", y).attr("dy", dy + "em");     
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            var textWidth = tspan.node().getComputedTextLength();
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                ++lineNumber;
+                tspan = text.append("tspan").attr("x", function(d) { return d.children || d._children ? -10 : 10; }).attr("y", 0).attr("dy", lineNumber * lineHeight + dy + "em").text(word);
+            }
+        }
+    });
+}
+  ////////////// end function to wrap text ////////////////////
   ///////////////   COLORS /////////////////////////////
 
   
@@ -58,7 +89,7 @@ function render([state, edu, industry]){
 
   var z = d3.scaleSqrt()
     .domain([0, 5000])
-    .range([ 2, 100]);
+    .range([ 10, 40]);
     
   var legend = d3.select('#bubble_legend').append('svg')
     .attr('class','svg_legend')
@@ -103,9 +134,9 @@ function render([state, edu, industry]){
 
     // Legend title
     legend.append("text")
-      .attr('x', xCircle + 15)
+      .attr('x', xCircle)
       .attr("y", leg_height - 5 )
-      .text("Total Number of Industry Workers")
+      .text("Total Number of Workers")
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
   
@@ -204,7 +235,7 @@ const lol_tooltip = d3.select('.container-1 #graph')
         .style("opacity", 1)
         .html("<small>"+d.state_name+ "'s Median Salary: " + d3.format("$,.2f")(d.median_salary_full) +"<br> Gender Gap: " + d3.format("$,.2f")(d.salary_gender_gap)+"<br> Male Median Salary: " + d3.format("$,.2f")(d.median_salary_male)+"<br> Female Median Salary: " + d3.format("$,.2f")(d.median_salary_female)+"</small>")
         .style("left", event.x-550 + "px")
-        .style("top", event.y+50 + "px")
+        .style("top", event.y + 20+ "px")
     }
 
     const showlolTooltip_gen = function(event, d) {
@@ -215,13 +246,13 @@ const lol_tooltip = d3.select('.container-1 #graph')
           .style("opacity", 1)
           .html("<small>"+d.state_name+ "'s Median Salary: " + d3.format("$,.2f")(d.median_salary_full) +"</small>")
           .style("left", event.x-550 + "px")
-          .style("top", event.y+50 + "px")
+          .style("top", event.y + 20 + "px")
       }
 const movelolTooltip = function(event, d) {
   lol_tooltip
         .style("opacity", 1)
         .style("left", event.x-550 + "px")
-        .style("top", event.y+50 + "px")
+        .style("top", event.y + 30 + "px")
     }
 const hidelolTooltip = function(event, d) {
   lol_tooltip
@@ -768,18 +799,19 @@ svg.append("line")
         // each node will store data and visualisation values to draw a bubble
         // industry is expected to be an array of data objects, read in d3.csv
         // function returns the new node array, with a node for each element in the industry input
-        function createNodes(industry) {
+        function createNodes(occupation) {
           // use max size in the data as the max in the scale's domain
           // note we have to ensure that size is a number
-          const maxSize = d3.max(industry, d => +d.count);
+          const maxSize = d3.max(occupation, d => +d.count);
+          const minSize = d3.min(occupation, d => +d.count);
       
           // size bubbles based on area
           const radiusScale = d3.scaleSqrt()
-            .domain([0, maxSize])
-            .range([0, 80])
+            .domain([minSize, maxSize])
+            .range([10, 40])
       
           // use map() to convert raw data into node data
-          const myNodes = industry.map(d => ({
+          const myNodes = occupation.map(d => ({
             ...d,
             radius: radiusScale(+d.count),
             size: +d.count,
@@ -791,13 +823,42 @@ svg.append("line")
         }
       
     
-      nodes_bubble = createNodes(industry);
+      nodes_bubble = createNodes(occupation);
       
           // create svg element inside provided selector
           svg3 = d3.select('.container-3 #graph').append('svg')
             .attr('width', width)
             .attr('height', height)
+          
+          var select = d3.select('.occupation-dropdown')
+            .on('change',onchange)
+
+          var defaultOption = select.append("option")
+            .data(occupation)
+            .text("All")
+            .attr("value", "All")
+            .enter();
          
+          var options = select
+          .selectAll('option')
+          .data(occupation)
+          .enter()
+          .append('option');
+
+          options
+          .text(function (d) { return d.occupation_name; })
+          .attr('value', (function (d) { return d.occupation_name; }));
+
+          function onchange() {
+            selected= d3.select('select').property('value')
+            console.log("selected is" + selected)
+
+            if(selected == 'All'){
+              bubbles.style('fill', d => fillColour(d.median_group))
+            } else {
+              bubbles.style('fill', d => d.occupation_name == selected ? fillColour(d.median_group) : '#ccc')
+            }
+          };
     
         // Lavel tooltip
     
@@ -807,7 +868,7 @@ svg.append("line")
             .duration(200)
         tooltip
             .style("opacity", 1)
-            .html("<small>Median: " + d3.format("($.2f")(d.median) +"<br> Industry: " + d.industry+"<br> Count: " + d.count+"</small")
+            .html("<small>Median: " + d3.format("($.2f")(d.median_salary) +"<br> "+ d.occupation_name+"<br> Count: " + d.count+"<br> Gender Gap Percentage: " + d3.format(".4r")(+d.gender_gap_percentage)+"%</small")
             .style("left", (event.x) -550 + "px")
             .style("top", (event.y) + 20 + "px")
         }
@@ -884,15 +945,123 @@ svg.append("line")
       
 
       console.log("medianClusters")
+
+      // bubbles
+      // .transition().duration(1000).ease(d3.easeLinear)
+      // .attr('r', d => d.radius)
       simulation  
         .force('charge', d3.forceManyBody().strength([2]))
         .force('forceX', d3.forceX(d => median_group_coords[d.median_group][0]))
         .force('forceY', d3.forceY(d => median_group_coords[d.median_group][1]))
        // .force('collide', d3.forceCollide(d => salarySizeScale(d.Median) + 4))
         .alpha(0.7).alphaDecay(0.02).restart()
+      svg3
+        .append("text")
+        .attr('class',"median_group_bubble_label")
+        .attr('x', median_group_coords['0 - 2500'][0])
+        .attr("y", median_group_coords['0 - 2500'][1] - 100 )
+        .text("Median Salary 0 - 2500 ")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+
+      svg3
+        .append("text")
+        .attr('class',"median_group_bubble_label")
+        .attr('x', median_group_coords['2500 - 5000'][0])
+        .attr("y", median_group_coords['2500 - 5000'][1] + 80)
+        .text("Median Salary 2500 - 5000")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+      svg3
+        .append("text")
+        .attr('class',"median_group_bubble_label")
+        .attr('x', median_group_coords['5000 and more'][0])
+        .attr("y", median_group_coords['5000 and more'][1] + 80)
+        .text("Median Salary 5000 and more")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+     
+      bubbles.style('fill', d => fillColour(d.median_group))
+      svg3.selectAll(".gender_gap_bubble_label").remove()
     }
 
+    function gender_gap_scatter(){
+
+      svg3.selectAll(".median_group_bubble_label").remove()
+
+      var fem_y = d3.scaleLinear()
+      .domain([10, 90])
+      .range([ 0, width]);
+
+      // var fem_y = d3.scaleLinear()
+      // .domain([0, max_salary_pay])
+      // .range([ 0, height-200]);
+
+      var fem_x = d3.scaleBand()
+            .range([ (height-50),0 ])
+            .domain(occupation.map(function(d) { return d.gender_gap_group; }))
+            .padding(1);
+      
+
+      console.log("gender gap scatter")
+      // bubbles
+      //   .transition().duration(0).ease(d3.easeLinear)
+      //   .attr('r', 8)
+      simulation  
+        .force('charge', d3.forceManyBody().strength([0]))
+        .force('forceX', d3.forceX(d => fem_x(d.gender_gap_group)))
+        .force('forceY', d3.forceY(d => fem_y(d.Occupation_2D)))
+       // .force('collide', d3.forceCollide(d => salarySizeScale(d.Median) + 4))
+        .alpha(1).alphaDecay(0.02).restart()
+
+      svg3
+        .append("text")
+        .attr('class',"gender_gap_bubble_label")
+        .attr('x', d => fem_x('Female earn more'))
+        .attr("y", 40 )
+        .text("Female earn more")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+      svg3
+        .append("text")
+        .attr('class',"gender_gap_bubble_label")
+        .attr('x', d => fem_x('less than 10%'))
+        .attr("y", 40 )
+        .text("Male earn more ")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+      svg3
+        .append("text")
+        .attr('class',"gender_gap_bubble_label")
+        .attr('x', d => fem_x('less than 10%'))
+        .attr("y", 40 + 16 )
+        .text("(less than 10%) ")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+
+      svg3
+        .append("text")
+        .attr('class',"gender_gap_bubble_label")
+        .attr('x', d => fem_x('More than 10%'))
+        .attr("y", 40 )
+        .text("Male earn more")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        svg3
+        .append("text")
+        .attr('class',"gender_gap_bubble_label")
+        .attr('x', d => fem_x('More than 10%'))
+        .attr("y", 40 + 16 )
+        .text("(more than 10%)")
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+     }
+
     function recentre(){
+
+      bubbles.style('fill', d => fillColour(d.median_group))
+      svg3.selectAll(".median_group_bubble_label").remove()
+      svg3.selectAll(".gender_gap_bubble_label").remove()
       simulation  
         .force('charge', d3.forceManyBody().strength([2]))
         .force('forceX', d3.forceX(d => centre.x))
@@ -918,6 +1087,7 @@ svg.append("line")
 
         if(i == 1){ recentre()}
         if (i == 2){ medianClusters()}
+        if (i == 3){ gender_gap_scatter()}
 
         console.log("3: ", i)
         simulation
@@ -935,7 +1105,8 @@ svg.append("line")
 var promises = [
     d3.json('./data/state_full.json'),
     d3.json('./data/edu_industry.json'),
-    d3.json('./data/industry_full.json')
+    d3.json('./data/industry_gap.json'),
+    d3.json('./data/occupation.json')
   ]
   //
   Promise.all(promises).then((render)

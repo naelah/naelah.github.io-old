@@ -278,3 +278,8 @@ svg{
   padding: 5px;
   font: 12px sans-serif;	
 }
+
+.occupation-dropdown{
+  font: 15px sans-serif;
+  width: 300px
+}
