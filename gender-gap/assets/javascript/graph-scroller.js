@@ -69,10 +69,103 @@ function render([state, edu, industry, occupation]){
   .domain(["1", "2", "3", "4"])
   .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99"])
 
+  lolColour = d3.scaleOrdinal()
+  .domain(["1", "2", "3", "4"])
+  .range(["#cec3d4","#bf96d4","#75b8e6","#1f78b4"])
+
+
 
   /////////////// START LEGENDS ////////////////////////
+  leg_height = 200
+  leg_width = 300
+  xCircle = leg_width/3
+  xLabel = (leg_width/3) + 100
+  leg_padding = 30
 
   ///// LOLLIPOP LEGENDS ///////
+
+  var gen_label = d3.select('#gen_label').append('svg')
+    .attr('class','svg_legend')
+    .attr('width',leg_width+'px')
+    .attr('height', leg_height  + 'px');
+
+    var size = 20
+    var gengroups = ["Median Salary"]
+
+
+    gen_label
+    .selectAll('gen_label')
+      .data(gengroups)
+      .enter()
+      .append("circle")
+        .attr("cx", 10)
+        .attr("cy", function(d,i){ return 40 + (i + 2)*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("r", 7)
+        .style("fill", function(d){ return '#33a02c'})
+        // .on("mouseover", highlight)
+        // .on("mouseleave", noHighlight)
+
+    
+    // Add labels beside legend dots
+
+    gen_label
+    .selectAll('gen_label')
+      .data(gengroups)
+      .enter()
+      .append("text")
+        .attr("x", 10 + size*.8)
+        .attr("y", function(d,i){ return 32 + (i + 2) * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", function(d){ return '#33a02c'})
+        .text(function(d){ return d})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .style("font-size", "16px")
+        // .on("mouseover", highlight)
+        // .on("mouseleave", noHighlight)
+    
+
+
+  
+  var fem_label = d3.select('#fem_label').append('svg')
+  .attr('class','svg_legend')
+  .attr('width',leg_width+'px')
+  .attr('height', leg_height  + 'px');
+
+  var size = 20
+  var femgroups = ["Female Median Salary (Female earn more)" ,"Female Median Salary (Male earn more)","Male Median Salary (Female earn more)","Male Median Salary (Male earn more)"]
+
+
+
+  fem_label
+  .selectAll('fem_label')
+    .data(femgroups)
+    .enter()
+    .append("circle")
+      .attr("cx", 10)
+      .attr("cy", function(d,i){ return 40 + (i + 2)*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr("r", 7)
+      .style("fill", function(d){ return lolColour(d)})
+      // .on("mouseover", highlight)
+      // .on("mouseleave", noHighlight)
+
+  
+  // Add labels beside legend dots
+
+  fem_label
+  .selectAll('fem_label')
+    .data(femgroups)
+    .enter()
+    .append("text")
+      .attr("x", 10 + size*.8)
+      .attr("y", function(d,i){ return 32 + (i + 2) * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+      .style("fill", function(d){ return lolColour(d)})
+      .text(function(d){ return d})
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+      .style("font-size", "16px")
+      // .on("mouseover", highlight)
+      // .on("mouseleave", noHighlight)
+  
 
   ///// END LOLLIPOP LEGENDS ///////
 
@@ -81,11 +174,7 @@ function render([state, edu, industry, occupation]){
   // legend
   var valuesToShow = [100, 1000, 3000]
 
-  leg_height = 200
-  leg_width = 300
-  xCircle = leg_width/3
-  xLabel = (leg_width/3) + 100
-  leg_padding = 30
+ 
 
   var z = d3.scaleSqrt()
     .domain([0, 5000])
@@ -273,9 +362,9 @@ const hidelolTooltip = function(event, d) {
         return d3.descending(a.salary_gender_gap, b.salary_gender_gap)});
 
         var y_fem = d3.scaleBand()
-.range([ (height-50),0 ])
-.domain(state_fem.map(function(d) { return d.state_name; }))
-.padding(1);
+          .range([ (height-50),0 ])
+          .domain(state_fem.map(function(d) { return d.state_name; }))
+          .padding(1);
 
         console.log("gender_gap chart")
         var transition_y = svg.transition().duration(750),
@@ -292,7 +381,7 @@ const hidelolTooltip = function(event, d) {
         .enter().append("line")
         .attr('class', 'myLine')
         gap_line
-        .attr("x1", function(d) { return x(d.median_salary_male); })
+        .attr("x1", function(d) { return (d.salary_gender_gap > 0) ? x(d.median_salary_male)-8 : x(d.median_salary_male)+8; })
         .attr("x2", function(d) { return x(d.median_salary_female); })
         .attr("y1", function(d) { return y_fem(d.state_name); })
         .attr("y2", function(d) { return y_fem(d.state_name); })
@@ -321,7 +410,7 @@ const hidelolTooltip = function(event, d) {
         femcircle
         .transition().duration(1000).ease(d3.easeLinear)
         .attr("r","8")
-        .style("fill", "#cab2d6");
+        .style("fill", d =>  (d.salary_gender_gap < 0 )? "#cec3d4"  : "#bf96d4");
 
         svg.selectAll("circle")
         .data(state_fem)
@@ -329,7 +418,7 @@ const hidelolTooltip = function(event, d) {
         .attr("cy", function(d) { return y_fem(d.state_name); })
         .attr("cx", function(d) { return x(d.median_salary_male); })
         .attr("r", "8")
-        .style("fill", "#1f78b4");
+        .style("fill", d => (d.salary_gender_gap < 0 ) ? "#75b8e6"  : "#1f78b4");
 
 
         
@@ -982,6 +1071,7 @@ svg.append("line")
         .style("font-size", "16px")
      
       bubbles.style('fill', d => fillColour(d.median_group))
+      options.property("selected", d => d == 'All');
       svg3.selectAll(".gender_gap_bubble_label").remove()
     }
 
