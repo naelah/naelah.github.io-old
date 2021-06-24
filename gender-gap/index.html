@@ -19,7 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <!-- Define a description for better SEO result -->
-<meta name="description" content="關於・について・Introduction">
+<meta name="description" content="Visualization on Malaysia's gender gap for the year 2019 in relation to state, education, and occupation">
 
 <!-- Cheome Web App theme color -->
 <meta name="theme-color" content="#BA90C2">
@@ -55,44 +55,17 @@
 <meta property="og:site_name" content="Naelah Nordin">
 <meta property="og:title" content="About">
 <meta property="og:url" content="http://0.0.0.0:4321/example-about/">
-<meta property="og:description" content="關於・について・Introduction">
+<meta property="og:description" content="Gender Gap Visualization">
 <meta property="og:image" content="http://0.0.0.0:4321/logo.png">
 
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@naelnord">
+<meta name="twitter:creator" content="@naelnord">
 
-
-  <meta name="twitter:site" content="@naelnord">
-
-
-
-  <meta name="twitter:creator" content="@naelnord">
-
-
-
-<!-- Post specified styles -->
-<style data-assets-inline>
-  :root {
-    
-
-    
-
-    
-
-    
-  }
-
-  body {
-    
-  }
-
-  
-  
-    
-</style>
 <!-- Main navigation with current page / categoriy highlighted -->
 <nav class="navigation">
   <ul>
-    <li >
+    <li class='current'  >
         <a href="/">Naelah Nordin</a>
       </li>
     <li >
@@ -119,193 +92,177 @@
 <article lang="en">
 
   <!-- Page title -->
-  <header style="     ">
+  <header>
 
     <h1 class="" title="About" data-title="About">
-      The Malaysian Dream<span class="dot dot--post"> </span>
+      The Malaysian Dream: <br>Exploring the Gender Gap<span class="dot dot--post"> </span>
     </h1>
 
     
-      <!-- <center><small>Analyzing Malaysia's gender pay gap, how education effects income, <br>and which industry dominates the workforce and offers higher salary</small></center> -->
+      <!-- <center><small>Exploring the Malaysian Gender Gap in Education & Workforce</small></center> -->
     <center><small>by Naelah Nordin</small></center>
     <!-- <center><small>by Naelah Nordin・available on Github</small></center> -->
 
 
   </header>
 
-  <div class="page-content">
-    <p>Test test test test</p>
+  <div class="page-content">  
+    <div class="no-viz">
+      <p>Recently, a prominent Malaysian public figure commented that women in pursuit of a relationship with a man should <a href="https://www.thestar.com.my/news/nation/2021/06/10/motivational-speaker-dr-muhaya-deletes-video-telling-women-to-039act-dumb039-to-land-a-man">"buat bodoh-bodoh"</a>, which roughly translates to acting dumb or being a damsel in distress. This comment sparked debate amongst Malaysians calling out on the misoginy and disrespectful views deep-rooted in traditional gender roles, and also highlights that this expectation on women's submission is not only strongly defended, but also came from a highly educated woman herself. This begs the question of wether traditional gender roles are still relevant and considered a norm and how it effects gender inequality in the workforce?</p>
 
-<p>Sparanoid is a design studio operated by Tunghsiao Liu. You can ping me on <a href="https://twitter.com/tunghsiao">Twitter</a> or send correspondence to <a href="mailto:t@sparanoid.com">t@sparanoid.com</a>.</p>
+      <p>This visualization is based on DOSM's 2019 Salaries & Wages Survey data, created for the purpose of UiTM's Data Visualization Competition 2021.</p>
 
-<h1>Simple scrolling events for d3 graphics</h1>
+      <h1>Mind the gap: How is the gender pay gap in each state?</h1>
+    </div>
+    <div id='container' class='container-1'>
+      <div id='graph'></div>
+      <div id='sections'>
+        <div style="padding-bottom: 70%;">
+          
+          <h3>Median salary by state</h3>
+          <p>The national median salary is RM2,207.25 which is close to the median salary of Melaka and Pahang. The top three states with the highest median salaries are WP Putrajaya, Kuala Lumpur and Selangor with RM4,000, RM3096, and RM2,875 respectively. Selangor and Kuala Lumpur being close to each other is not surprising as some people living in Selangor commute to Kuala Lumpur for work so the median salary of Selangor residents are most probably inclusive of salary gained working in Kuala lumpur.</p><p>The state with the lowest median salary on the other hand is Kelantan with RM1,650, and this is reflective of the lower cost of living in the east coast.
+          </p> 
+          <div id="gen_label"></div>
+        </div>
 
-<div id='container' class='container-1'>
-  <div id='graph'></div>
-  <div id='sections'>
-    <div style="padding-bottom: 70%;">
-      <h3>Connect text and graphics</h3>
-      <span class='mono'>graph-scroll</span> 
-      takes a ion of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-      <br><br><br><br><br><br>
-      <div id="gen_label"></div>
+        <div >
+        </div>
+
+
+        <div style="padding-bottom: 70%;">
+          <h3>Gender Gap by State</h3>
+          <p>
+          Now we look into the difference between median female salaries with median male salaries in each state to determine how much women are paid less or more compared to their male counterpart. The state with the biggest gender pay gap is WP Labuan with men earning RM703.50 more than women with the median female salary falling below the national median salary and the median male salary being above.</p><p>
+          
+          Meanwhile in Sarawak, Kelantan and Sabah, the women earn more than men, however, both genders' median salaries fall below the national median salary. City centre Kuala Lumpur and Selangor display small gender pay gaps implying the opportunities for both men and women are almost equal. 
+        </p>
+          <div id="fem_label"></div>
+
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>Sticky graph</h3>
+          When the graph starts to scroll out of view, <span class='mono'>postiion: sticky</span> keeps the graph element stuck to the top of the page while the text scrolls by.
+
+        </div>
+      </div>
     </div>
 
-    <div style="padding-bottom: 70%;">
-      <h3>Highlight active text</h3>
-      The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-      
+    <h1>
+      Multiple graphs work too!
+    </h1>
+
+    <div id='container' class='container-2'>
+      <div id='graph'></div>
+      <div id='sections'>
+        <div></div>
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+
+
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+
+
+        </div>
+
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+
+
+        </div>
+
+
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+
+
+        </div>
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          v
+
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+
+          n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          v
+
+
+        </div>
+      </div>
     </div>
-
-
-    <div style="padding-bottom: 70%;">
-      <h3>Headers and footers</h3>
-      To support headers and intro images/text, the explanatory text and graphic are wrapped with a container element:    
-
-
-    and passed to <span class='mono'>graphScroll</span>
-    <div id="fem_label"></div>
-
-    </div>
-
-    <div style="padding-bottom: 70%;">
-      <h3>Sticky graph</h3>
-      When the graph starts to scroll out of view, <span class='mono'>postiion: sticky</span> keeps the graph element stuck to the top of the page while the text scrolls by.
-
-    </div>
-
-  </div>
-
-</div>
-
-<h1>
-  Multiple graphs work too!
-</h1>
-
-<div id='container' class='container-2'>
-  <div id='graph'></div>
-
-  <div id='sections'>
-    <div>
-    </div>
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-
-
-    </div>
-
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-
-
-    </div>
-
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-
-
-    </div>
-
-
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-
-
-    </div>
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      v
-
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-
-      n mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      v
-
-
-    </div>
-  </div>
-</div>
     <h1>
       Multiple graphs work three!
     </h1>
     
-<div id='container' class='container-3'>
-  <div id='graph'></div>
-    
-  <div id='sections'>
-    <div>
+    <div id='container' class='container-3'>
+      <div id='graph'></div>
+        
+      <div id='sections'>
+        <div>
+        </div>
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          
+          <div id="bubble_legend"></div>
+        
+
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          <div id="bubble_label"></div>
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          <select class="occupation-dropdown"></select>
+        </div>  
+        <div style="padding-bottom: 70%;">
+          <h3>Mobile</h3>
+
+          On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
+          
+        </div>  
+      </div>
+
     </div>
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
+    <div class='no-viz'>
+      <p>This is an Curtana theme example About page.</p>
 
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      
-      <div id="bubble_legend"></div>
-     
+      <p>Sparanoid is a design studio operated by Tunghsiao Liu. You can ping me on <a href="https://twitter.com/tunghsiao">Twitter</a> or send correspondence to <a href="mailto:t@sparanoid.com">t@sparanoid.com</a>.</p>
+  
 
-    </div>  
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      <div id="bubble_label"></div>
-    </div>  
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      <select class="occupation-dropdown"></select>
-    </div>  
-    <div style="padding-bottom: 70%;">
-      <h3>Mobile</h3>
-
-      On mobile centering the graph and sections while adding a some padding for the first slide is a good option: 
-      
-    </div>  
-  </div>
-
-</div>
-
-  <!-- Page content -->
-  <div class="page-content">
-    <p>This is an Curtana theme example About page.</p>
-
-<p>Sparanoid is a design studio operated by Tunghsiao Liu. You can ping me on <a href="https://twitter.com/tunghsiao">Twitter</a> or send correspondence to <a href="mailto:t@sparanoid.com">t@sparanoid.com</a>.</p>
-
-<h2 id="colophon">Colophon</h2>
-
-<p><a href="https://sparanoid.com/lab/amsf/"><abbr title="Almace Scaffolding">AMSF</abbr></a> (<a href="https://github.com/sparanoid/sparanoid.com">Source</a>) -
-<a href="https://github.com/">GitHub</a> -
-<a href="https://aws.amazon.com/cloudfront/">CloudFront</a> -
-<a href="https://macromates.com/">Textmate</a></p>
-
-<p>All posts are © Sparanoid, Inc., all rights reserved.</p>
+  
+    </div>
 
 
   </div>
-
 </article>
-
-
-
 </main>
 
 
@@ -313,11 +270,7 @@
 
   <footer class="footer">
     <ul>
-      <li><a href="/">Naelah Nordin</a></li>
-
-      
-
-      
+      <li><p>© Naelah Nordin 2021, All rights reserved.</p></li>   
     </ul>
   </footer>
 

@@ -1081,14 +1081,14 @@ svg.append("line")
 
       var fem_y = d3.scaleLinear()
       .domain([10, 90])
-      .range([ 0, width]);
+      .range([ 0, height]);
 
       // var fem_y = d3.scaleLinear()
       // .domain([0, max_salary_pay])
       // .range([ 0, height-200]);
 
       var fem_x = d3.scaleBand()
-            .range([ (height-50),0 ])
+            .range([ 0,(width)])
             .domain(occupation.map(function(d) { return d.gender_gap_group; }))
             .padding(1);
       

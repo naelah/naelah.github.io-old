@@ -3,11 +3,16 @@ html{
 }
   body {
     margin: 0;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     min-height: 1000px;
     padding-left: var(--space-sm);
     /* --space-body: none; */
     box-sizing: content-box;
+  }
+
+  .navigation {
+    margin: auto;
+    max-width: 1040px;
   }
   
   .content header{
@@ -16,162 +21,20 @@ html{
 
   .page-content{
     max-width: 1200px;
+    margin: auto;
+  }
+
+  .current a {
+    color: #ba90c2;
+}
+
+  .no-viz a{
+    text-decoration: underline;
   }
 
   :root{
     --space-lg: none;
   }
-  /* .checkbox {
-      position: absolute;
-    top: 15px;
-    left: 15px;
-  }
-  
-  .dropdown {
-      position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-  
-  text {
-    font-size: 12px;
-  }
-  
-  .title {
-    font-weight: bold;
-  }
-  
-  .grid-line {
-    stroke: black;
-    opacity: 0.2;
-  }
-  
-  .rect-label {
-    stroke: black;
-  }
-  
-  .selection-line {
-    stroke: black;
-    stroke-dasharray: 5,5;
-  }
-  
-  .hover-label {
-    background-color: blue;
-  }
-  
-  .lollipop-line {
-    stroke: black;
-    stroke-width: 1px;
-  }
-  
-  circle {
-    stroke-width: 1px;
-    stroke: black;
-  }
-  
-  circle.lollipop-start {
-    fill: #00c100;
-  }
-  
-  .lollipop-end {
-    fill: #d700d7;
-  }
-      
-  .lollipop-median {
-    fill: white;
-  }
-  
-  div.tooltip {
-    position: absolute;
-    text-align: center;
-    padding: 5px;
-    font: 12px sans-serif;		
-    background: white;	
-    border: 1px black solid;	
-    border-radius: 4px;
-    pointer-events: none;	
-  } */
-
-
-   /* GRAPHIC */
-
-   /* GRAPHIC CODE */
-/* .graphic {
-	width: 100%;
-	position: relative;
-}
-
-.graphic__prose {
-	width: 24rem;
-}
-
-.graphic__prose .trigger {
-	padding: 0;
-	margin: 0;
-	min-height: 240px;
-	
-}
-
-.graphic__vis {
-	position: absolute;
-	top: 0;
-	margin-left: 30rem;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-	height: 100vh;
-}
-
-.graphic__vis.is-fixed {
-	position: fixed;
-}
-
-.graphic__vis.is-bottom {
-	top: auto;
-	bottom: 0;
-}
-
-/* .graphic__vis svg {
-	/* border: 1px dashed black; 
-	top: 50%;
-	position: relative;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
-
-}
-
-.item circle {
-	stroke: #666;
-	stroke-width: 1px;
-	fill: #fff;
-}
-
-.item text {
-	fill: #666;
-	font-size: 12px;
-	text-anchor: middle;
-	alignment-baseline: middle;
-}
-
-
-
-/* graph-scroll.js version 
-.graphic__vis.graph-scroll-fixed {
-	position: fixed;
-	right: auto;
-}
-
-.graphic__vis.graph-scroll-below {
-	top: auto;
-	bottom: 0;
-} */ 
-
-/* body{
-  max-width: 900px;
-  margin: 0px auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-} */
 
 .content header h1{
 
@@ -179,6 +42,10 @@ html{
   
 }
 
+.no-viz {
+  margin: auto;
+  max-width: 800px;
+}
 
 h1{
   margin: 50px;
@@ -190,7 +57,9 @@ h1{
 #container{
   position: relative;
 }
-
+#sections p{
+  font-size: 18px;
+}
 #sections{
   width: 340px;
 }
@@ -282,4 +151,9 @@ svg{
 .occupation-dropdown{
   font: 15px sans-serif;
   width: 300px
+}
+
+.footer ul{
+  max-width: 800px;
+  margin:auto;
 }
