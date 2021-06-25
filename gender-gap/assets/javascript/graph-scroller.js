@@ -67,7 +67,7 @@ function render([state, edu, industry, occupation]){
 
   fillColour = d3.scaleOrdinal()
   .domain(["1", "2", "3", "4"])
-  .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99"])
+  .range(["#a6cee3","#33a02c","#fb9a99","#1f78b4","#b2df8a"])
 
   lolColour = d3.scaleOrdinal()
   .domain(["1", "2", "3", "4"])
@@ -128,7 +128,7 @@ function render([state, edu, industry, occupation]){
   
   var fem_label = d3.select('#fem_label').append('svg')
   .attr('class','svg_legend')
-  .attr('width',leg_width+'px')
+  .attr('width',leg_width+10+'px')
   .attr('height', leg_height  + 'px');
 
   var size = 20
@@ -238,7 +238,7 @@ function render([state, edu, industry, occupation]){
     .attr('height', leg_height  + 'px');
 
     var size = 20
-    var allgroups = ["0 - 2500", "2500 - 5000", "More than 5000"]
+    var allgroups = ["0 - 2500", "2500 - 5000", "5000 and more"]
 
     bubble_label
     .append("text")
